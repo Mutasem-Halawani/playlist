@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 24, 2017, 12:36:15 PM
+    Author     : mutasem
+*/
+
+div#popup-container{
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index:10;
+    background-color: rgba(32,32,32,0.8);
+}
+
+div#popup{
+    padding:3rem;
+    width:30%;
+    background:linear-gradient(to bottom,#4C7F73,#00FFC2,#4C7F73 ) ;
+    text-align: center;
+    border-radius: 3px;
+    z-index:15;
+    /*font-family: 'Poiret One', cursive;*/
+    /*font-family: 'Josefin Sans', sans-serif;*/
+font-family: 'Gloria Hallelujah', cursive;
+
+}
+
+div#modal-header{
+    color:red;
+    font-size: 3rem;
+}
+
+
+/*div#pop h4{
+    border-radius: 3px;
+    background-color: black;
+}*/
+
+button#cancel{
+    border-radius: 3px;
+    /*background-color: black;*/
+}

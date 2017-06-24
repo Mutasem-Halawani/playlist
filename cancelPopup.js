@@ -4,12 +4,4 @@
  * and open the template in the editor.
  */
 
-$("h3").lettering();
 
-
-var popup = new Popup('Are you sure?');
-
-
-$('i#delete-album').on('click',function(){
-    popup.buildPopup();
-})

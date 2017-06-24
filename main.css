@@ -8,15 +8,17 @@ and open the template in the editor.
     Author     : mutasem
 */
 
+html{
+    height:100vh;
+}
+
 body{
     background-color:#000;
     font-family:arial;
     overflow-x: hidden;
     min-width: 325px;
-    /*width:80%;*/
-/*    position: fixed;
-    left:0;
-    right:0;*/
+     background-color:#00FFC2 !important;
+     margin: 0;
 }
 
 header{
@@ -24,6 +26,9 @@ header{
     justify-content: space-between;
     padding: 1rem;
     background:linear-gradient(to bottom,#4C7F73,#00FFC2 ) ;
+    font-family: 'Bubbler One', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
 }
 a#add-new-playlist{
     color:white !important;
@@ -35,17 +40,11 @@ a#add-new-playlist:hover{
 }
 
 input#search-playlists{
-    /*border-radius: 5px;*/
+    border-radius: 2px;
     padding:3px;
     border:none;
     border-bottom: 1px solid gray;
-    /*background-color: #00CC9B;*/
 }
-
-/*input#search-playlists {
-    width: 20%;
-    transition: ease-in-out, width .35s ease-in-out;
-}*/
 
 input#search-playlists:focus {
     outline: none;
@@ -55,7 +54,6 @@ main{
     display:flex!important;
     justify-content: space-around;
     flex-wrap: wrap;
-    background-color:#00FFC2;
 }
 
 i{

@@ -3,68 +3,47 @@
   <head>
     <meta charset="utf-8" />
     <title>My Awesome Player</title>
+    <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Josefin+Sans|Poiret+One" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
-    <!--<link rel="stylesheet" href="font-awesome.min.css">-->
+    <link rel="stylesheet" href="popup.css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
   </head>
   <body>
       <header>
           <a href="#" id="add-new-playlist"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add new playlist</a>
-          <input id="search-playlists" type="search" placeholder="Search playlists">
+          <label><input id="search-playlists" type="search" placeholder="Search playlists" size="15"></label>
       </header>
       <main>
           <section>
               <!--<h3>Coldplay</h3>-->
               <div>
-                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                <i id="delete-album" class="fa fa-times-circle-o" aria-hidden="true"></i>
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </div>
               <i class="fa fa-play-circle" aria-hidden="true"></i>
           </section>
           <section>
               <div>
-                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </div>
-          <!--<h3>Coldplay</h3>-->
-          <i class="fa fa-play-circle" aria-hidden="true"></i>
-          </section>
-          <section>
-              <div>
-                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </div>
-          <!--<h3>Coldplay</h3>-->
-          <i class="fa fa-play-circle" aria-hidden="true"></i>
-          </section>
-          <section>
-              <div>
-                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </div>
-          <!--<h3>Coldplay</h3>-->
-          <i class="fa fa-play-circle" aria-hidden="true"></i>
-          </section>
-          <section>
-              <div>
-                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </div>
-          <!--<h3>Coldplay</h3>-->
-          <i class="fa fa-play-circle" aria-hidden="true"></i>
-          </section>
-          <section>
-              <div>
-                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                <i id="delete-album" class="fa fa-times-circle-o" aria-hidden="true"></i>
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </div>
           <!--<h3>Coldplay</h3>-->
           <i class="fa fa-play-circle" aria-hidden="true"></i>
           </section>
       </main>
-      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-      <script type="text/javascript" src="Lettering.js-master/jquery.lettering.js"></script>
+      
+<!--        <div id="popup-container">
+            <div id="popup">
+                <h4>Are you sure?</h4>
+                <button id="yes">Yes</button>
+                <button id="cancel">Cancel</button>
+            </div>
+        </div>-->
+      <script src="jquery-3.2.1.min.js"></script>
+      <script src="Lettering.js-master/jquery.lettering.js"></script>
+      <script src="popup.js"></script>
       <script src="script.js"></script>
   </body>
 </html>
