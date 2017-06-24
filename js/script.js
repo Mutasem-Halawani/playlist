@@ -20,3 +20,6 @@ $('a#add-new-playlist').on('click',function(){
 $('button#reset-feilds').on('click',function(){
     $("form#add-new-playlist-form")[0].reset();
 });
+
+//var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
+//    playlistSongsPopup.buildPopup();

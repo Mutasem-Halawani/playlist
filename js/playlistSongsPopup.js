@@ -19,13 +19,13 @@ class PlaylistSongsPopup{
         popUpContainer.appendTo('body');
         
         var popUp = $('<div>',{
-            id : 'add-new-playlist-popup',
+            id : 'add-playlist-songs-popup',
             'class' : 'popup'
         });
         popUp.appendTo(popUpContainer);
         
         var header = $('<div>',{
-            id: 'new-playlist-popup-modal-header',
+            id: 'add-playlist-songs-popup-modal-header',
             'class' : 'popup-modal-header',
             text : this.text
         });
@@ -34,74 +34,76 @@ class PlaylistSongsPopup{
         
         
         var content = $('<div>',{
-           id : 'add-new-playlist-content', 
+           id : 'add-playlist-songs-content', 
            'class' : 'popup-modal-content'
         });
         
         content.appendTo(popUp);
         
         var form = $('<form>',{
-            id: 'add-new-playlist-form'
+            id: 'add-playlist-songs-form'
         });
         
         form.appendTo(content);
         
-        var nameLabel = $('<label>',{
-            for : 'playlist-name',
-            text : 'Playlist name'
-        });
-        
-        nameLabel.appendTo(form);
-        
-        var nameInput = $('<input>',{
-           id : 'playlist-name',
-           type : 'text',
-           placeholder : 'e.g. New Pop Songs'
-        });
-        
-        nameInput.appendTo(form);
-        
-         var URLLabel = $('<label>',{
-            for : 'playlist-URL',
-            text : 'Playlist URL'
+        var URLLabel = $('<label>',{
+            for : 'song-URL',
+            text : 'Song URL'
         });
         
         URLLabel.appendTo(form);
         
         var URLInput = $('<input>',{
-           id : 'playlist-URL',
+           id : 'song-URL',
            type : 'text',
            placeholder : 'http://'
         });
         
-         URLInput.appendTo(form);
-         
-          var img = $('<img>',{
-            id : "add-album-image",
-            src : 'http://www.mentalfloss.com/wp-content/uploads/2009/01/Nas-gods-son-music-album.jpg'
-         });
-         
-         img.appendTo(content);
+        URLInput.appendTo(form);
+        
+         var nameLabel = $('<label>',{
+            for : 'song-name',
+            text : 'Song Name'
+        });
+        
+        nameLabel.appendTo(form);
+        
+        var nameInput = $('<input>',{
+           id : 'song-name',
+           type : 'text',
+           placeholder : 'e.g. Yellow'
+        });
+        
+         nameInput.appendTo(form);
          
          var footer = $('<div>',{
+             id : 'add-playlist-songs-popup-modal-footer',
             'class' :  'popup-modal-footer'
          });
          
          footer.appendTo(popUp);
         
-        var nextButton = $('<button>',{
-           id : 'next',
-           text : 'Next'
+        var songLink = $('<a>',{
+           href : '#',
+           id : 'add-another-song',
+           text : 'Add another song'
         });
         
-        nextButton.appendTo(footer);
+        songLink.appendTo(footer);
         
-        var resetButton = $('<button>',{
-           id : 'reset-feilds',
-           text : 'Reset fields'
+        var icon = $('<i>',{
+           'class' : 'fa fa-plus-circle',
+           'aria-hidden' : 'true'
         });
         
-        resetButton.appendTo(footer);
+        icon.appendTo(songLink);
+        
+        var button = $('<button>',{
+           id : 'finish-and-save',
+           text : 'Finish &amp; Save'
+        });
+        
+        button.appendTo(footer);
     }
     
     removePopup(e){
