@@ -23,7 +23,6 @@ div.popup-container{
 
 div.popup{
     padding:3rem;
-    width:30%;
     background:linear-gradient(to bottom,#4C7F73,#00FFC2,#4C7F73 ) ;
     border-radius: 3px;
     z-index:15;
@@ -34,7 +33,7 @@ div.popup-modal-header{
     font-size: 3rem;
 }
 
-div#new-playlist-popup-modal-header{
+div#new-playlist-popup-modal-header, div#add-playlist-songs-popup-modal-header{
     border-bottom: 1.5px solid black;
 }
 
@@ -45,4 +44,5 @@ button#cancel, button#delete{
 
 div#cancel-popup{
     text-align:center;
+    width:30%;
 }

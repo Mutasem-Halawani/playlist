@@ -1,0 +1,23 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 25, 2017, 12:31:17 AM
+    Author     : mutasem
+*/
+
+div#add-playlist-songs-popup{
+    /*width: 50%;*/
+}
+
+div#add-playlist-songs-popup-modal-footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: .3em;
+}
+
+div#add-playlist-songs-popup-modal-header{
+    margin-bottom: 0.3em;
+}

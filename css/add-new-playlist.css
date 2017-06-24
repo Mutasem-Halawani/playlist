@@ -20,15 +20,15 @@ div#add-new-playlist-content{
    justify-content: space-between;
 }
 
-div#add-new-playlist-popup{
-    width:50%;
-}
-
 form#add-new-playlist-form{
     display:flex;
     flex-direction: column;
 }
 
-button#reset-feilds{
-    margin-left:0.5em;
+div#add-new-playlist-popup{
+    width:50%;
 }
+
+/*button#reset-feilds{
+    margin-left:0.5em;
+}*/
