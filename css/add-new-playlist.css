@@ -28,3 +28,7 @@ form#add-new-playlist-form{
     display:flex;
     flex-direction: column;
 }
+
+button#reset-feilds{
+    margin-left:0.5em;
+}

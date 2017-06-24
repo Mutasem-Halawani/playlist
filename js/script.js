@@ -9,7 +9,14 @@ $("h3").lettering();
 
 var cancelPopup = new CancelPopup('Are you sure?');
 
+var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
 
+ newPlaylistPopup.buildPopup();
+ 
 $('i#delete-album').on('click',function(){
     cancelPopup.buildPopup();
 })
+
+$('button#reset-feilds').on('click',function(){
+    $("form#add-new-playlist-form")[0].reset();
+});
