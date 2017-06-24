@@ -39,8 +39,6 @@ class NewPlaylistPopup{
         
         content.appendTo(popUp);
         
-       
-        
         var form = $('<form>',{
             id: 'add-new-playlist-form'
         });
@@ -106,13 +104,6 @@ class NewPlaylistPopup{
     }
     
     removePopup(e){
-        if (e.target.id === "popup-container"){
             e.currentTarget.remove();
-    }
-    
-        else if (e.target.id === "cancel"){
-            e.currentTarget.remove();
-    }
-    
 }
 }

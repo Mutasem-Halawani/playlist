@@ -12,6 +12,7 @@ class CancelPopup{
     
     buildPopup(){
         var popUpContainer = $('<div>',{
+            id : 'cancel-popup-container',
            'class': 'popup-container',
            click: this.removePopup.bind(this)
         });
@@ -44,11 +45,12 @@ class CancelPopup{
     }
     
     removePopup(e){
-        if (e.target.id === "popup-container"){
+        if (e.target.id === "cancel-popup-container"){
             e.currentTarget.remove();
     }
     
         else if (e.target.id === "cancel"){
+        console.log('hi');
             e.currentTarget.remove();
     }
     

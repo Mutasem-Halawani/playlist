@@ -5,17 +5,17 @@
  */
 
 $("h3").lettering();
-
-
-var cancelPopup = new CancelPopup('Are you sure?');
-
-var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
-
- newPlaylistPopup.buildPopup();
  
 $('i#delete-album').on('click',function(){
+    var cancelPopup = new CancelPopup('Are you sure?');
     cancelPopup.buildPopup();
-})
+});
+
+
+$('a#add-new-playlist').on('click',function(){
+    var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
+    newPlaylistPopup.buildPopup();
+});
 
 $('button#reset-feilds').on('click',function(){
     $("form#add-new-playlist-form")[0].reset();
