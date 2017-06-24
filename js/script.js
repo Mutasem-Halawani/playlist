@@ -7,9 +7,9 @@
 $("h3").lettering();
 
 
-var popup = new Popup('Are you sure?');
+var cancelPopup = new CancelPopup('Are you sure?');
 
 
 $('i#delete-album').on('click',function(){
-    popup.buildPopup();
+    cancelPopup.buildPopup();
 })

@@ -4,4 +4,6 @@
  * and open the template in the editor.
  */
 
-
+$('button#reset-feilds').on('click',function(){
+    $("form#add-new-playlist-form")[0].reset();
+});

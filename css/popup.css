@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : mutasem
 */
 
-div#popup-container{
+div.popup-container{
     position:fixed;
     top:0;
     bottom:0;
@@ -21,31 +21,28 @@ div#popup-container{
     background-color: rgba(32,32,32,0.8);
 }
 
-div#popup{
+div.popup{
     padding:3rem;
     width:30%;
     background:linear-gradient(to bottom,#4C7F73,#00FFC2,#4C7F73 ) ;
-    text-align: center;
     border-radius: 3px;
     z-index:15;
-    /*font-family: 'Poiret One', cursive;*/
-    /*font-family: 'Josefin Sans', sans-serif;*/
-font-family: 'Gloria Hallelujah', cursive;
-
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
-div#modal-header{
-    color:red;
+div.popup-modal-header{
     font-size: 3rem;
 }
 
+div#new-playlist-popup-modal-header{
+    border-bottom: 1.5px solid black;
+}
 
-/*div#pop h4{
+button#cancel, button#delete{
     border-radius: 3px;
-    background-color: black;
-}*/
+    margin-top:1em;
+}
 
-button#cancel{
-    border-radius: 3px;
-    /*background-color: black;*/
+div#cancel-popup{
+    text-align:center;
 }

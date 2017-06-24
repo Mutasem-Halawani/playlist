@@ -39,14 +39,14 @@ a#add-new-playlist:hover{
     text-decoration: line-through;
 }
 
-input#search-playlists{
+input{
     border-radius: 2px;
     padding:3px;
     border:none;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid gray;
 }
 
-input#search-playlists:focus {
+input:focus {
     outline: none;
 }
 
@@ -83,10 +83,6 @@ i.fa-play-circle,i.fa-times-circle-o,i.fa-pencil{
     visibility: hidden;
 }
 
-img{
-    border-radius: 100%;
-    margin: 2rem;
-}
 
 section{
     background: url('http://egyptianstreets.com/wp-content/uploads/2016/12/Coldplay-feat.jpg') no-repeat center center;
@@ -99,6 +95,11 @@ section{
     justify-content: center !important;
     margin:1em;
     position:relative;
+}
+
+secton img{
+    border-radius: 100%;
+    margin: 2rem;
 }
 
 section:hover{
