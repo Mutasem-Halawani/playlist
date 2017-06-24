@@ -8,10 +8,11 @@ and open the template in the editor.
     Author     : mutasem
 */
 
-body {
+body{
     background-color:#000;
     font-family:arial;
     overflow-x: hidden;
+    min-width: 325px;
     /*width:80%;*/
 /*    position: fixed;
     left:0;
@@ -22,12 +23,39 @@ header{
     display: flex !important;
     justify-content: space-between;
     padding: 1rem;
-    background-color: red;
+    background:linear-gradient(to bottom,#4C7F73,#00FFC2 ) ;
 }
+a#add-new-playlist{
+    color:white !important;
+     text-decoration: none;
+}
+
+a#add-new-playlist:hover{
+    text-decoration: line-through;
+}
+
+input#search-playlists{
+    /*border-radius: 5px;*/
+    padding:3px;
+    border:none;
+    border-bottom: 1px solid gray;
+    /*background-color: #00CC9B;*/
+}
+
+/*input#search-playlists {
+    width: 20%;
+    transition: ease-in-out, width .35s ease-in-out;
+}*/
+
+input#search-playlists:focus {
+    outline: none;
+}
+
 main{
     display:flex!important;
     justify-content: space-around;
     flex-wrap: wrap;
+    background-color:#00FFC2;
 }
 
 i{
@@ -36,14 +64,14 @@ i{
 
 i.fa-play-circle{
     font-size:4em;
-    color:pink;
+    color:#4C7F73;
 }
 
 i.fa-times-circle-o, i.fa-pencil{
     font-size:1.5em;
     position:absolute;
     top:0.3em;
-    color:pink;
+    color:#4C7F73;
 }
 
 i.fa-pencil{
@@ -83,8 +111,6 @@ section:hover{
 section:hover i.fa-pencil,section:hover i.fa-times-circle-o , section:hover i.fa-play-circle {
    visibility: visible;
 }
-
-
 
 h3 span {
   font: 2rem Monaco, MonoSpace;
