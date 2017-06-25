@@ -46,12 +46,19 @@ class PlaylistSongsPopup{
         
         form.appendTo(content);
         
+        var songRow = $('<div>',{
+           id : 'song-row', 
+           'class' : 'add-song-rows'
+        });
+        
+        songRow.appendTo(form);
+        
         var URLLabel = $('<label>',{
             for : 'song-URL',
             text : 'Song URL'
         });
         
-        URLLabel.appendTo(form);
+        URLLabel.appendTo(songRow);
         
         var URLInput = $('<input>',{
            id : 'song-URL',
@@ -59,14 +66,14 @@ class PlaylistSongsPopup{
            placeholder : 'http://'
         });
         
-        URLInput.appendTo(form);
+        URLInput.appendTo(songRow);
         
          var nameLabel = $('<label>',{
             for : 'song-name',
             text : 'Song Name'
         });
         
-        nameLabel.appendTo(form);
+        nameLabel.appendTo(songRow);
         
         var nameInput = $('<input>',{
            id : 'song-name',
@@ -74,7 +81,14 @@ class PlaylistSongsPopup{
            placeholder : 'e.g. Yellow'
         });
         
-         nameInput.appendTo(form);
+         nameInput.appendTo(songRow);
+         
+          var deleteIcon = $('<i>',{
+           'class' : 'fa fa-times',
+           'aria-hidden' : 'true'
+        });
+        
+        deleteIcon.appendTo(songRow);
          
          var footer = $('<div>',{
              id : 'add-playlist-songs-popup-modal-footer',
@@ -114,14 +128,19 @@ class PlaylistSongsPopup{
     }
     
     addRow(){
+          var songRow = $('<div>',{
+           id : 'song-row', 
+           'class' : 'add-song-rows'
+        });
         
-        console.log('start');
+        songRow.appendTo('form#add-playlist-songs-form');
+        
         var URLLabel = $('<label>',{
             for : 'song-URL',
             text : 'Song URL'
         });
         
-        URLLabel.appendTo($('form#add-playlist-songs-form'));
+        URLLabel.appendTo($(songRow));
         
         var URLInput = $('<input>',{
            id : 'song-URL',
@@ -129,14 +148,14 @@ class PlaylistSongsPopup{
            placeholder : 'http://'
         });
         
-        URLInput.appendTo($('form#add-playlist-songs-form'));
+        URLInput.appendTo($(songRow));
         
          var nameLabel = $('<label>',{
             for : 'song-name',
             text : 'Song Name'
         });
         
-        nameLabel.appendTo($('form#add-playlist-songs-form'));
+        nameLabel.appendTo($(songRow));
         
         var nameInput = $('<input>',{
            id : 'song-name',
@@ -144,8 +163,14 @@ class PlaylistSongsPopup{
            placeholder : 'e.g. Yellow'
         });
         
-         nameInput.appendTo($('form#add-playlist-songs-form'));
-        console.log('finish');
+         nameInput.appendTo($(songRow));
+         
+         var deleteIcon = $('<i>',{
+           'class' : 'fa fa-times',
+           'aria-hidden' : 'true'
+        });
+        
+        deleteIcon.appendTo(songRow);
     }
 }
 
