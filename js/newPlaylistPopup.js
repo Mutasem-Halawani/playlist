@@ -12,6 +12,7 @@ class NewPlaylistPopup{
     
     buildPopup(){
         var popUpContainer = $('<div>',{
+            id : 'new-playlist-popup-container',
            'class': 'popup-container',
            click: this.removePopup.bind(this)
         });
@@ -90,20 +91,36 @@ class NewPlaylistPopup{
         
         var nextButton = $('<button>',{
            id : 'next',
-           text : 'Next'
+           text : 'Next',
+           click : this.openNextPopup
         });
         
         nextButton.appendTo(footer);
         
         var resetButton = $('<button>',{
            id : 'reset-feilds',
-           text : 'Reset fields'
+           text : 'Reset fields',
+           click : this.clearFields.bind(this)
         });
         
         resetButton.appendTo(footer);
     }
     
     removePopup(e){
+        if (e.target.id === "new-playlist-popup-container"){
             e.currentTarget.remove();
-}
+        }
+        if (e.target.id === 'next'){
+            e.currentTarget.remove();
+       }
+   }
+       
+    openNextPopup(e){
+        var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
+        playlistSongsPopup.buildPopup();
+    }
+    
+    clearFields(){
+        $("form#add-new-playlist-form")[0].reset();
+    }
 }

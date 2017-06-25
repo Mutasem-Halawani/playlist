@@ -41,16 +41,13 @@ class CancelPopup{
             text: 'cancel',
         });
         cancelButton.appendTo(popUp);
-        
     }
     
     removePopup(e){
         if (e.target.id === "cancel-popup-container"){
             e.currentTarget.remove();
     }
-    
         else if (e.target.id === "cancel"){
-        console.log('hi');
             e.currentTarget.remove();
     }
     

@@ -13,6 +13,7 @@ class PlaylistSongsPopup{
     
     buildPopup(){
         var popUpContainer = $('<div>',{
+            id : 'playlist-songs-popup-container',
            'class': 'popup-container',
            click: this.removePopup.bind(this)
         });
@@ -31,7 +32,6 @@ class PlaylistSongsPopup{
         });
         
         header.appendTo(popUp);
-        
         
         var content = $('<div>',{
            id : 'add-playlist-songs-content', 
@@ -86,7 +86,8 @@ class PlaylistSongsPopup{
         var songLink = $('<a>',{
            href : '#',
            id : 'add-another-song',
-           text : 'Add another song'
+           text : 'Add another song',
+           click : this.addRow
         });
         
         songLink.appendTo(footer);
@@ -100,13 +101,51 @@ class PlaylistSongsPopup{
         
         var button = $('<button>',{
            id : 'finish-and-save',
-           text : 'Finish &amp; Save'
+           text : 'Finish & Save'
         });
         
         button.appendTo(footer);
     }
     
     removePopup(e){
+        if (e.target.id === "playlist-songs-popup-container"){
             e.currentTarget.remove();
+        }
+    }
+    
+    addRow(){
+        
+        console.log('start');
+        var URLLabel = $('<label>',{
+            for : 'song-URL',
+            text : 'Song URL'
+        });
+        
+        URLLabel.appendTo($('form#add-playlist-songs-form'));
+        
+        var URLInput = $('<input>',{
+           id : 'song-URL',
+           type : 'text',
+           placeholder : 'http://'
+        });
+        
+        URLInput.appendTo($('form#add-playlist-songs-form'));
+        
+         var nameLabel = $('<label>',{
+            for : 'song-name',
+            text : 'Song Name'
+        });
+        
+        nameLabel.appendTo($('form#add-playlist-songs-form'));
+        
+        var nameInput = $('<input>',{
+           id : 'song-name',
+           type : 'text',
+           placeholder : 'e.g. Yellow'
+        });
+        
+         nameInput.appendTo($('form#add-playlist-songs-form'));
+        console.log('finish');
+    }
 }
-}
+
