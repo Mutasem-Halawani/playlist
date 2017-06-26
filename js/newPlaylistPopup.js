@@ -78,7 +78,7 @@ class NewPlaylistPopup{
          
           var img = $('<img>',{
             id : "add-album-image",
-            src : 'http://www.mentalfloss.com/wp-content/uploads/2009/01/Nas-gods-son-music-album.jpg'
+            src : 'http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg'
          });
          
          img.appendTo(content);

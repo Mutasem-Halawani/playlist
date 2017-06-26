@@ -24,7 +24,9 @@ $('i#edit-album').on('click',function(){
 
 
 $('i#play-album').on('click',function(){
-    
+    var musicPlayer = new MusicPlayer();
+    musicPlayer.clearHTML();
+    musicPlayer.buildMusicPlayer();
 });
 
 

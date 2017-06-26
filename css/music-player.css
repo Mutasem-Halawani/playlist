@@ -56,15 +56,13 @@ ol.music-songs-list{
 }
 
 div.song-marquee{
-    background-color: black;
     color:blue;
 }
 
 h5.current-song{
     animation: song-marquee 6s infinite linear;
     font-weight: 900;
-font-family: 'Orbitron', sans-serif;
-/*font-family: 'Audiowide', cursive;*/
+    font-family: 'Orbitron', sans-serif;
 }
 
 @keyframes song-marquee {
