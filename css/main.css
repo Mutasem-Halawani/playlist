@@ -50,41 +50,14 @@ input:focus {
     outline: none;
 }
 
-main{
+main.all-albums{
     display:flex!important;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-i{
-    margin-right:2px;
-}
 
-i.fa-play-circle{
-    font-size:4em;
-    color:#4C7F73;
-}
-
-i.fa-times-circle-o, i.fa-pencil{
-    font-size:1.5em;
-    position:absolute;
-    top:0.3em;
-    color:#4C7F73;
-}
-
-i.fa-pencil{
-    left:7em;
-}
-
-i.fa-play-circle:hover,i.fa-times-circle-o:hover, i.fa-pencil:hover {
-     transform: scale(1.2);
-}
-i.fa-play-circle,i.fa-times-circle-o,i.fa-pencil{
-    visibility: hidden;
-}
-
-
-section{
+section.album-cover{
     background: url('http://egyptianstreets.com/wp-content/uploads/2016/12/Coldplay-feat.jpg') no-repeat center center;
     /*background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWLVV1eZcBkkhVZMIZiwc1_-rsZqbBLqKY1AyiBnV9rkHP9x-T') no-repeat center center;*/
     border-radius: 100%;
@@ -97,19 +70,16 @@ section{
     position:relative;
 }
 
-secton img{
+secton.album-cover img{
     border-radius: 100%;
     margin: 2rem;
 }
 
-section:hover{
+section.album-cover:hover{
     box-shadow: 0 0 7em #808080;
     cursor: pointer;
 }
 
-section:hover i.fa-pencil,section:hover i.fa-times-circle-o , section:hover i.fa-play-circle {
-   visibility: visible;
-}
 
 h3 span {
   font: 2rem Monaco, MonoSpace;

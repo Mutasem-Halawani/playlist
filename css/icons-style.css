@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 26, 2017, 1:53:37 PM
+    Author     : mutasem
+*/
+
+i{
+    margin-right:2px;
+}
+
+i#play-album{
+    font-size:4em;
+    color:#4C7F73;
+}
+
+i#delete-album, i#edit-album{
+    font-size:1.5em;
+    position:absolute;
+    top:0.3em;
+    color:#4C7F73;
+}
+
+i#edit-album{
+    left:7em;
+}
+
+i#play-album:hover,i#delete-album:hover, i#edit-album:hover {
+     transform: scale(1.2);
+}
+i#play-album,i#delete-album,i#edit-album{
+    visibility: hidden;
+}
+
+section.album-cover:hover i#play-album,section.album-cover:hover i#delete-album , section.album-cover:hover i#edit-album {
+   visibility: visible;
+}
+
+i#music-play-delete-album ,i#music-play-edit-album{
+    font-size: 2.5em;
+}
+i#music-play-delete-album:hover ,i#music-play-edit-album:hover{
+    cursor: pointer;
+}

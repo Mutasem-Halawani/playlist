@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 class PlaylistSongsPopup{
     
     constructor(text){
@@ -85,7 +84,8 @@ class PlaylistSongsPopup{
          
           var deleteIcon = $('<i>',{
            'class' : 'fa fa-times',
-           'aria-hidden' : 'true'
+           'aria-hidden' : 'true',
+           click: this.removeRow
         });
         
         deleteIcon.appendTo(songRow);
@@ -167,10 +167,15 @@ class PlaylistSongsPopup{
          
          var deleteIcon = $('<i>',{
            'class' : 'fa fa-times',
-           'aria-hidden' : 'true'
+           'aria-hidden' : 'true',
+           click: this.removeRow
         });
         
         deleteIcon.appendTo(songRow);
+    }
+    
+    removeRow(){
+        console.log('hi');
     }
 }
 

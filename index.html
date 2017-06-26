@@ -5,34 +5,61 @@
     <title>My Awesome Player</title>
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Bubbler+One" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/popup.css">
     <link rel="stylesheet" href="css/add-new-playlist.css">
     <link rel="stylesheet" href="css/add-playlist-songs.css">
-    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/music-player.css">
+    <link rel="stylesheet" href="css/icons-style.css">
+    <link rel="stylesheet" href="css/media-queries.css">
   </head>
   <body>
       <header>
           <a href="#" id="add-new-playlist"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add new playlist</a>
           <label><input id="search-playlists" type="search" placeholder="Search playlists" size="15"></label>
       </header>
-      <main>
-          <section>
-              <!--<h3>Coldplay</h3>-->
+      <main class="all-albums">
+<!--          <section class="album album-cover">
+              <h3>Coldplay</h3>
               <div>
                 <i id="delete-album" class="fa fa-times-circle-o" aria-hidden="true"></i>
-                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <i id="edit-album" class="fa fa-pencil" aria-hidden="true"></i>
               </div>
-              <i class="fa fa-play-circle" aria-hidden="true"></i>
+              <i id ="play-album" class="fa fa-play-circle" aria-hidden="true"></i>
           </section>
-          <section>
+          <section class="album album-cover">
+              <h3>Coldplay</h3>
               <div>
                 <i id="delete-album" class="fa fa-times-circle-o" aria-hidden="true"></i>
-                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <i id="edit-album" class="fa fa-pencil" aria-hidden="true"></i>
               </div>
-          <!--<h3>Coldplay</h3>-->
-          <i class="fa fa-play-circle" aria-hidden="true"></i>
-          </section>
+              <i id ="play-album" class="fa fa-play-circle" aria-hidden="true"></i>
+          </section>-->
+      </main>
+      <main class="music-player-main">
+            <div class="music-player">
+                  <section class="album album-cover music-player-album-cover">
+
+                      <i id ="play-album" class="fa fa-play-circle" aria-hidden="true"></i>
+                </section>
+                <section class="player-songs">
+                    <audio class="audio-player" controls autoplay>
+                         <source src="songs/Tupac - Never Had A Friend Like Me (HQ).mp3" type="audio/mp3">
+                         <source src="songs/Tupac - Only God Can Judge Me.mp3" type="audio/mp3">
+                         Your browser does not support the audio element.
+                    </audio>
+
+                      <ol class="music-songs-list">
+                          <li class="music-songs-list-item">Never Had A Friend Like Me</li>
+                          <li class="music-songs-list-item">Only God Can Judge</li>
+                      </ol>
+                </section>
+            </div>
+            <div class="controls">
+                     <i id="music-play-delete-album" class="fa fa-times-circle-o" aria-hidden="true"></i>
+                     <i id="music-play-edit-album" class="fa fa-pencil" aria-hidden="true"></i>
+            </div>
       </main>
       <script src="js/jquery-3.2.1.min.js"></script>
       <script src="js/Lettering.js-master/jquery.lettering.js"></script>
