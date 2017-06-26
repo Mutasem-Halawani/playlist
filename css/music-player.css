@@ -10,16 +10,15 @@ and open the template in the editor.
 
 div.music-player{
     display: inline-flex;
-    background-color: red;
+    background-color: black;
     border-radius: 200px;
     width: 675px;
+    overflow: hidden;
 }
 
 section.player-songs{
-/*    display: flex;
-    flex-direction: column;
-    justify-content: space-around;*/
     margin-top: 10%;
+    overflow: hidden;
 }
 
 main.music-player-main{
@@ -35,25 +34,44 @@ div.controls{
 }
 
 section.music-player-album-cover{
-    animation-name:rotate-album;
-    animation-duration:20s;
-    animation-iteration-count:infinite;
-    animation-timing-function: linear;
+    animation: rotate-album 20s infinite linear;
 }
 
 
 @keyframes rotate-album{
     from {
     transform: rotate(0deg)
-              rotate(0deg);
-	}
-    to  {
+               rotate(0deg);
+    }
+    to {
     transform: rotate(-360deg)
                rotate(-360deg);
-	}
+    }
 }
         
 ol.music-songs-list{
     /*height: 180px;*/
     /*overflow-y: scroll;*/
+    font-family: 'Audiowide', cursive;
+}
+
+div.song-marquee{
+    background-color: black;
+    color:blue;
+}
+
+h5.current-song{
+    animation: song-marquee 6s infinite linear;
+    font-weight: 900;
+font-family: 'Orbitron', sans-serif;
+/*font-family: 'Audiowide', cursive;*/
+}
+
+@keyframes song-marquee {
+    from {
+        transform:translateX(100%);
+    }
+    to {
+        transform:translateX(-100%);
+    }
 }

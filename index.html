@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>My Awesome Player</title>
-    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Bubbler+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Bubbler+One|Audiowide|Orbitron" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
     <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -44,7 +44,12 @@
                       <i id ="play-album" class="fa fa-play-circle" aria-hidden="true"></i>
                 </section>
                 <section class="player-songs">
-                    <audio class="audio-player" controls autoplay>
+                    <div class="song-marquee">
+                        <h5 class="current-song">
+                               Never Had A Friend Like Me
+                        </h5>
+                    </div>
+                    <audio class="audio-player" controls>
                          <source src="songs/Tupac - Never Had A Friend Like Me (HQ).mp3" type="audio/mp3">
                          <source src="songs/Tupac - Only God Can Judge Me.mp3" type="audio/mp3">
                          Your browser does not support the audio element.
@@ -56,6 +61,7 @@
                       </ol>
                 </section>
             </div>
+            
             <div class="controls">
                      <i id="music-play-delete-album" class="fa fa-times-circle-o" aria-hidden="true"></i>
                      <i id="music-play-edit-album" class="fa fa-pencil" aria-hidden="true"></i>
