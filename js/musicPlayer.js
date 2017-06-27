@@ -116,7 +116,8 @@ class MusicPlayer {
         
         var buttonText = $('<span>',{
             id : 'back-text',
-            text : 'Back'
+            text : 'Back',
+            click : this.previousPage
         });
         buttonText.appendTo(backButton);
         
@@ -165,6 +166,11 @@ class MusicPlayer {
             e.currentTarget.closest('div#cancel-popup-container').remove();
     }
 }
+    previousPage(){
+//        history.replaceState();
+//        history.replaceState( {} , 'foo', '/foo' );
+//        history.replaceState( {} , 'play-music' , '#');
+    }
 }
 
 

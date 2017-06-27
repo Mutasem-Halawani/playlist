@@ -27,5 +27,7 @@ $('i#play-album').on('click',function(){
     var musicPlayer = new MusicPlayer();
     musicPlayer.clearHTML();
     musicPlayer.buildMusicPlayer();
+    history.pushState(null, null, 'play-music');
 });
+
 

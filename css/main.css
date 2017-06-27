@@ -30,6 +30,7 @@ header{
     font-weight: 900;
     font-size: 2rem;
 }
+
 a#add-new-playlist{
     color:white !important;
      text-decoration: none;
@@ -54,8 +55,8 @@ main.all-albums{
     display:flex!important;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top: 3em;
 }
-
 
 section.album-cover{
     background: url('http://egyptianstreets.com/wp-content/uploads/2016/12/Coldplay-feat.jpg') no-repeat center center;
@@ -78,27 +79,27 @@ secton.album-cover img{
 section.album-cover:hover{
     box-shadow: 0 0 7em #808080;
     cursor: pointer;
+    position: relative;
 }
-
 
 h3 span {
   font: 2rem Monaco, MonoSpace;
-  height: 200px;
+  height: 5.5em;
   position: absolute;
-  width: 20px;
-  left: 20px;
-  top:  20px;
+  left: 4.01em;
+  bottom:  4.2em;
   transform-origin: bottom center;
+  font-size: 1.5em;
 }
-/*
-.char1 { transform: rotate(-6deg); }
-.char2 { transform: rotate(6deg); }
-.char3 { transform: rotate(12deg); }
-.char4 { transform: rotate(24deg); }
-.char5 { transform: rotate(30deg); }
-.char6 { transform: rotate(36deg); }
-.char7 { transform: rotate(42deg); }
-.char8 { transform: rotate(48deg); }*/
+
+.char1 { transform: rotate(-40deg); }
+.char2 { transform: rotate(-30deg); }
+.char3 { transform: rotate(-20deg); }
+.char4 { transform: rotate(-10deg); }
+.char5 { transform: rotate(0deg); }
+.char6 { transform: rotate(10deg); }
+.char7 { transform: rotate(20deg); }
+.char8 { transform: rotate(30deg); }
 
 
 
