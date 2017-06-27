@@ -29,14 +29,14 @@ i#edit-album{
 }
 
 i#play-album:hover,i#delete-album:hover, i#edit-album:hover {
-     transform: scale(1.2);
+    transform: scale(1.2);
 }
 i#play-album,i#delete-album,i#edit-album{
     visibility: hidden;
 }
 
 section.album-cover:hover i#play-album,section.album-cover:hover i#delete-album , section.album-cover:hover i#edit-album {
-   visibility: visible;
+    visibility: visible;
 }
 
 i#music-play-delete-album ,i#music-play-edit-album{

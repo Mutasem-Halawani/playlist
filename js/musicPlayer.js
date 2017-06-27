@@ -108,7 +108,20 @@ class MusicPlayer {
             'aria-hidden' : 'true'
         });
         editIcon.appendTo(controls);
+        
+        var backButton = $('<button>',{
+            id : 'back'
+        });
+        backButton.appendTo(main);
+        
+        var buttonText = $('<span>',{
+            id : 'back-text',
+            text : 'Back'
+        });
+        buttonText.appendTo(backButton);
+        
     }
+    
     
     deleteAlbum(){
         
