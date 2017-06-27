@@ -29,4 +29,8 @@ $('i#play-album').on('click',function(){
     musicPlayer.buildMusicPlayer();
 });
 
+$('i#music-play-delete-album').on('click',function(){
+    console.log('hi');
+});
+
 

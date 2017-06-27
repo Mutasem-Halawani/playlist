@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class MusicPlayer{
+class MusicPlayer {
+    
+    constructor(text){
+        this.text = text;
+    }
     
     clearHTML(){
         $('main.all-albums').empty();
@@ -11,7 +15,9 @@ class MusicPlayer{
     
     buildMusicPlayer(){
         var main  = $('<main>',{
-            'class' : 'music-player-main'
+            id : 'music-player-container',
+            'class' : 'music-player-main',
+            click: this.removePopup.bind(this)
         });
         main.appendTo('body');
         
@@ -91,7 +97,8 @@ class MusicPlayer{
         var deleteIcon = $('<i>',{
             id : 'music-play-delete-album',
             'class' : 'fa fa-times-circle-o',
-            'aria-hidden' : 'true'
+            'aria-hidden' : 'true',
+            click: this.deleteAlbum.bind(this)
         });
         deleteIcon.appendTo(controls);
         
@@ -102,6 +109,49 @@ class MusicPlayer{
         });
         editIcon.appendTo(controls);
     }
+    
+    deleteAlbum(){
+        
+        var popUpContainer = $('<div>',{
+            id : 'cancel-popup-container',
+           'class': 'popup-container',
+           click: this.removePopup.bind(this)
+        });
+        popUpContainer.appendTo('body');
+        
+        var popUp = $('<div>',{
+            id : 'cancel-popup',
+            'class' : 'popup'
+        });
+        popUp.appendTo(popUpContainer);
+        
+        var header = $('<div>',{
+            'class' : 'popup-modal-header',
+            text : 'Are you sure?'
+        });
+        header.appendTo(popUp);
+        
+         var deleteButton = $('<button>',{
+            id: 'delete',
+            text: 'delete'
+        });
+        deleteButton.appendTo(popUp);
+         var cancelButton = $('<button>',{
+            id: 'cancel',
+            text: 'cancel',
+            click : this.removePopup
+        });
+        cancelButton.appendTo(popUp);
+    }
+    
+    removePopup(e){
+        if (e.target.id === "cancel-popup-container"){
+            e.currentTarget.remove();
+    }
+        else if (e.target.id === "cancel"){
+            e.currentTarget.closest('div#cancel-popup-container').remove();
+    }
+}
 }
 
 

@@ -73,3 +73,18 @@ h5.current-song{
         transform:translateX(-100%);
     }
 }
+
+/*i#play-album{
+    animation: hold-button 100s infinite linear;
+}
+
+@keyframes hold-button{
+    from {
+    transform: rotate(-360deg)
+               rotate(-360deg);
+    }
+    to {
+   transform: rotate(1430deg)
+               rotate(1430deg);
+    }
+}*/

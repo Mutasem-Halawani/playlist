@@ -28,7 +28,6 @@ class CancelPopup{
             'class' : 'popup-modal-header',
             text : this.text
         });
-        
         header.appendTo(popUp);
         
          var deleteButton = $('<button>',{
