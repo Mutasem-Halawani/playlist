@@ -19,7 +19,8 @@ class MusicPlayer {
         var link = $('<a>',{
             href : '#',
             id : 'add-new-playlist',
-            text : 'Add new playlist'
+            text : 'Add new playlist',
+            click : this.addNewPlaylist
         });
         link.appendTo(header);
         
@@ -143,43 +144,15 @@ class MusicPlayer {
         var editIcon = $('<i>',{
             id : 'music-play-edit-album',
             'class' : 'fa fa-pencil',
-            'aria-hidden' : 'true'
+            'aria-hidden' : 'true',
+            click : this.editAlbum
         });
         editIcon.appendTo(controls);
     }
     
     deleteAlbum(){
-        
-        var popUpContainer = $('<div>',{
-            id : 'cancel-popup-container',
-           'class': 'popup-container',
-           click: this.removePopup.bind(this)
-        });
-        popUpContainer.appendTo('body');
-        
-        var popUp = $('<div>',{
-            id : 'cancel-popup',
-            'class' : 'popup'
-        });
-        popUp.appendTo(popUpContainer);
-        
-        var header = $('<div>',{
-            'class' : 'popup-modal-header',
-            text : 'Are you sure?'
-        });
-        header.appendTo(popUp);
-        
-         var deleteButton = $('<button>',{
-            id: 'delete',
-            text: 'delete'
-        });
-        deleteButton.appendTo(popUp);
-         var cancelButton = $('<button>',{
-            id: 'cancel',
-            text: 'cancel',
-            click : this.removePopup
-        });
-        cancelButton.appendTo(popUp);
+        var cancelPopup = new CancelPopup('Are you sure?');
+             cancelPopup.buildPopup();
     }
     
     removePopup(e){
@@ -189,11 +162,42 @@ class MusicPlayer {
         else if (e.target.id === "cancel"){
             e.currentTarget.closest('div#cancel-popup-container').remove();
     }
-}
+    }
     previousPage(){
-//        history.replaceState();
-//        history.replaceState( {} , 'foo', '/foo' );
-//        history.replaceState( {} , 'play-music' , '#');
+        console.log('button clicked');
+//          var musicPlayer = new MusicPlayer();
+         $('body').empty();
+//    musicPlayer.buildHeader();
+//    musicPlayer.buildMusicPlayer();
+    
+      var header = $('<header>').appendTo('body');
+        
+        var link = $('<a>',{
+            href : '#',
+            id : 'add-new-playlist',
+            text : 'Add new playlist',
+            click : this.addNewPlaylist
+        });
+        link.appendTo(header);
+        
+        var addIcon = $('<i>',{
+            'class' : 'fa fa-plus-circle',
+            'aria-hidden' : 'true'
+        });
+        addIcon.prependTo(link);
+        
+        var label = $('<label>').appendTo(header);
+        
+        var input = $('<input>',{
+            id : 'search-playlists',
+            type : 'search',
+            placeholder : 'Search playlists',
+            size : '15'
+        });
+        input.prependTo(label);
+        
+        var albums = new MusicAlbum();
+        albums.buildAlbum();
     }
     
     changeIconToPlay(){
@@ -206,6 +210,15 @@ class MusicPlayer {
          $('i#play-album-music-player').removeClass('show');
     }
     
+    addNewPlaylist(){
+        var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
+            newPlaylistPopup.buildPopup();    
+    }
+    
+    editAlbum(){
+         var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
+            newPlaylistPopup.buildPopup();  
+    }
 }
 
 

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 class MusicAlbum{
     
     constructor(text){
@@ -11,12 +10,11 @@ class MusicAlbum{
     }
     
     buildAlbum(){
-        var albumContainer = $('main',{
-           'class' : 'all-albums' 
+        var albumContainer = $('<main>',{
+           'class' : 'all-albums'
         });
         albumContainer.appendTo('body');
-              console.log('hi');
-
+        
         var album = $('<section>',{
            'class' : 'album album-cover'
         });
@@ -33,23 +31,51 @@ class MusicAlbum{
          var deleteIcon = $('<i>',{
             id : 'delete-album',
             'class' : 'fa fa-times-circle-o',
-            'aria-hidden' : 'true'
-//            click: this.deleteAlbum.bind(this)
+            'aria-hidden' : 'true',
+            click : this.deleteAlbum
         });
-        deleteIcon.appendTo(album);
+        deleteIcon.appendTo(icons);
         
         var editIcon = $('<i>',{
             id : 'edit-album',
             'class' : 'fa fa-pencil',
-            'aria-hidden' : 'true'
+            'aria-hidden' : 'true',
+            click : this.editAlbum
         });
-        editIcon.appendTo(album);
+        editIcon.appendTo(icons);
+        
         var playIcon = $('<i>',{
             id : 'play-album',
             'class' : 'fa fa-play-circle',
-            'aria-hidden' : 'true'
+            'aria-hidden' : 'true',
+            click : this.playAlbum 
         });
         playIcon.appendTo(album);
-        console.log('inside class');
     }
+    
+    playAlbum(){
+        var musicPlayer = new MusicPlayer();
+        musicPlayer.clearHTML();
+        musicPlayer.buildHeader();
+        musicPlayer.buildMusicPlayer();
+    }
+    
+    editAlbum(){
+         var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
+            newPlaylistPopup.buildPopup();  
+    }
+    
+    deleteAlbum(){
+        var cancelPopup = new CancelPopup('Are you sure?');
+             cancelPopup.buildPopup();
+    }
+    
+//    removePopup(e){
+//        if (e.target.id === "cancel-popup-container"){
+//            e.currentTarget.remove();
+//    }
+//        else if (e.target.id === "cancel"){
+//            e.currentTarget.closest('div#cancel-popup-container').remove();
+//    }
+//    }
 }

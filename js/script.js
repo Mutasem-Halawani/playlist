@@ -3,35 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-    var albums = new MusicAlbum();
-    albums.buildAlbum();
-$(document).ready(function(){
-//      console.log('hi');
-});
+var albums = new MusicAlbum();
+albums.buildAlbum();
 
 $("h3").lettering();
 
 $('a#add-new-playlist').on('click',function(){
     var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
     newPlaylistPopup.buildPopup();
-});
-
-$('i#delete-album').on('click',function(){
-    var cancelPopup = new CancelPopup('Are you sure?');
-    cancelPopup.buildPopup();
-});
-
-$('i#edit-album').on('click',function(){
-    var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
-    newPlaylistPopup.buildPopup();
-});
-
-$('i#play-album').on('click',function(){
-    var musicPlayer = new MusicPlayer();
-    musicPlayer.clearHTML();
-    musicPlayer.buildHeader();
-    musicPlayer.buildMusicPlayer();
-//    history.pushState(null, null, 'play-music');
 });
 
 
