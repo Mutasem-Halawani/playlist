@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+    var albums = new MusicAlbum();
+    albums.buildAlbum();
+$(document).ready(function(){
+//      console.log('hi');
+});
 
 $("h3").lettering();
- 
 
 $('a#add-new-playlist').on('click',function(){
     var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
@@ -21,7 +25,6 @@ $('i#edit-album').on('click',function(){
     var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
     newPlaylistPopup.buildPopup();
 });
-
 
 $('i#play-album').on('click',function(){
     var musicPlayer = new MusicPlayer();

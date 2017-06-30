@@ -32,7 +32,7 @@ div.controls{
     justify-content: center;
     margin-left: 1em;
 }
-
+/*
 section.music-player-album-cover{
     animation: rotate-album 20s infinite linear;
 }
@@ -47,7 +47,7 @@ section.music-player-album-cover{
     transform: rotate(-360deg)
                rotate(-360deg);
     }
-}
+}*/
         
 ol.music-songs-list{
     /*height: 180px;*/
@@ -74,7 +74,7 @@ h5.current-song{
     }
 }
 
-/*i#play-album{
+/*i#play-album-music-player{
     animation: hold-button 100s infinite linear;
 }
 
@@ -88,3 +88,15 @@ h5.current-song{
                rotate(1430deg);
     }
 }*/
+
+.fa-play-circle-album, fa-pause-album{
+    display:none;
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display:none;
+}

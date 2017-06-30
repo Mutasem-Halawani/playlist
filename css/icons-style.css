@@ -12,8 +12,13 @@ i{
     margin-right:2px;
 }
 
-i#play-album{
+i#play-album,i#play-album-music-player{
     font-size:4em;
+    color:#4C7F73;
+}
+
+i#pause{
+    font-size:3em;
     color:#4C7F73;
 }
 
@@ -28,7 +33,7 @@ i#edit-album{
     left:7em;
 }
 
-i#play-album:hover,i#delete-album:hover, i#edit-album:hover {
+i#play-album:hover,i#play-album-music-player:hover,i#delete-album:hover, i#edit-album:hover,i#pause:hover {
     transform: scale(1.2);
 }
 i#play-album,i#delete-album,i#edit-album{
@@ -45,4 +50,8 @@ i#music-play-delete-album ,i#music-play-edit-album{
 i#music-play-delete-album:hover ,i#music-play-edit-album:hover{
     cursor: pointer;
     transform: scale(1.2);
+}
+
+i#pause{
+    display:none;
 }

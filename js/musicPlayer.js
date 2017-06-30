@@ -32,11 +32,20 @@ class MusicPlayer {
         albumSection.appendTo(musicPlayer);
         
         var playIcon = $('<i>',{
-            id : 'play-album',
-            'class' : 'fa fa-play-circle',
-            'aria-hidden' : 'true'
+            id : 'play-album-music-player',
+            'class' : 'fa fa-play-circle fa-play-circle-album show',
+            'aria-hidden' : 'true',
+            click : this.changeIconToPause
         });
         playIcon.appendTo(albumSection);
+        
+        var pauseIcon = $('<i>',{
+            id : 'pause',
+            'class' : 'fa fa-pause fa-pause-album hide',
+            'aria-hidden' : 'true',
+            click : this.changeIconToPlay
+        });
+        pauseIcon.appendTo(albumSection);
         
         var playerSection = $('<section>',{
             'class' : 'player-songs'
@@ -171,6 +180,18 @@ class MusicPlayer {
 //        history.replaceState( {} , 'foo', '/foo' );
 //        history.replaceState( {} , 'play-music' , '#');
     }
+    
+    changeIconToPlay(){
+        $('i#play-album-music-player').addClass('show');
+        $('i#pause').removeClass('show');
+    }
+    
+    changeIconToPause(){
+        $('i#pause').addClass('show');
+         $('i#play-album-music-player').removeClass('show');
+    }
+    
+    
 }
 
 
