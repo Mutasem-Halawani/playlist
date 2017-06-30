@@ -16,9 +16,7 @@ button#back {
   font-size: 28px;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 0.5em;
-  height: 10%;
-  width: 10%;
+  width: 100px;
 }
 
 button#back span {

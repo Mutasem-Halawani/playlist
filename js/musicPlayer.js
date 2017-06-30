@@ -10,7 +10,36 @@ class MusicPlayer {
     }
     
     clearHTML(){
-        $('main.all-albums').empty();
+        $('body').empty();
+    }
+    
+    buildHeader(){
+        var header = $('<header>').appendTo('body');
+        
+        var link = $('<a>',{
+            href : '#',
+            id : 'add-new-playlist',
+            text : 'Add new playlist'
+        });
+        link.appendTo(header);
+        
+        var addIcon = $('<i>',{
+            'class' : 'fa fa-plus-circle',
+            'aria-hidden' : 'true'
+        });
+        addIcon.prependTo(link);
+        
+        var backButton = $('<button>',{
+            id : 'back'
+        });
+        backButton.appendTo(header);
+        
+        var buttonText = $('<span>',{
+            id : 'back-text',
+            text : 'Back',
+            click : this.previousPage
+        });
+        buttonText.appendTo(backButton);
     }
     
     buildMusicPlayer(){
@@ -117,21 +146,7 @@ class MusicPlayer {
             'aria-hidden' : 'true'
         });
         editIcon.appendTo(controls);
-        
-        var backButton = $('<button>',{
-            id : 'back'
-        });
-        backButton.appendTo(main);
-        
-        var buttonText = $('<span>',{
-            id : 'back-text',
-            text : 'Back',
-            click : this.previousPage
-        });
-        buttonText.appendTo(backButton);
-        
     }
-    
     
     deleteAlbum(){
         
@@ -190,7 +205,6 @@ class MusicPlayer {
         $('i#pause').addClass('show');
          $('i#play-album-music-player').removeClass('show');
     }
-    
     
 }
 
