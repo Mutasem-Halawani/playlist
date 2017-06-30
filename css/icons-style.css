@@ -47,11 +47,15 @@ section.album-cover:hover i#play-album,section.album-cover:hover i#delete-album 
 i#music-play-delete-album ,i#music-play-edit-album{
     font-size: 2em;
 }
-i#music-play-delete-album:hover ,i#music-play-edit-album:hover{
+i#music-play-delete-album:hover ,i#music-play-edit-album:hover,i#delete-row:hover{
     cursor: pointer;
     transform: scale(1.2);
 }
 
 i#pause{
     display:none;
+}
+
+i#delete-row:hover{
+    color: red;
 }

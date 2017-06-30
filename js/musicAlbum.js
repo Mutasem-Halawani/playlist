@@ -70,12 +70,4 @@ class MusicAlbum{
              cancelPopup.buildPopup();
     }
     
-//    removePopup(e){
-//        if (e.target.id === "cancel-popup-container"){
-//            e.currentTarget.remove();
-//    }
-//        else if (e.target.id === "cancel"){
-//            e.currentTarget.closest('div#cancel-popup-container').remove();
-//    }
-//    }
 }

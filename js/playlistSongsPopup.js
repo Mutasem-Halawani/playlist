@@ -44,53 +44,9 @@ class PlaylistSongsPopup{
         });
         
         form.appendTo(content);
-        
-        var songRow = $('<div>',{
-           id : 'song-row', 
-           'class' : 'add-song-rows'
-        });
-        
-        songRow.appendTo(form);
-        
-        var URLLabel = $('<label>',{
-            for : 'song-URL',
-            text : 'Song URL'
-        });
-        
-        URLLabel.appendTo(songRow);
-        
-        var URLInput = $('<input>',{
-           id : 'song-URL',
-           type : 'text',
-           placeholder : 'http://'
-        });
-        
-        URLInput.appendTo(songRow);
-        
-         var nameLabel = $('<label>',{
-            for : 'song-name',
-            text : 'Song Name'
-        });
-        
-        nameLabel.appendTo(songRow);
-        
-        var nameInput = $('<input>',{
-           id : 'song-name',
-           type : 'text',
-           placeholder : 'e.g. Yellow'
-        });
-        
-         nameInput.appendTo(songRow);
+//        this.addRow();
          
-          var deleteIcon = $('<i>',{
-           'class' : 'fa fa-times',
-           'aria-hidden' : 'true',
-           click: this.removeRow
-        });
-        
-        deleteIcon.appendTo(songRow);
-         
-         var footer = $('<div>',{
+        var footer = $('<div>',{
              id : 'add-playlist-songs-popup-modal-footer',
             'class' :  'popup-modal-footer'
          });
@@ -100,7 +56,7 @@ class PlaylistSongsPopup{
         var songLink = $('<a>',{
            href : '#',
            id : 'add-another-song',
-           text : 'Add another song',
+           text : 'Add song',
            click : this.addRow
         });
         
@@ -129,7 +85,6 @@ class PlaylistSongsPopup{
     
     addRow(){
           var songRow = $('<div>',{
-           id : 'song-row', 
            'class' : 'add-song-rows'
         });
         
@@ -166,11 +121,13 @@ class PlaylistSongsPopup{
          nameInput.appendTo($(songRow));
          
          var deleteIcon = $('<i>',{
+           id : 'delete-row',
            'class' : 'fa fa-times',
            'aria-hidden' : 'true',
-           click: this.removeRow
+           click: function(e){
+                $(e.target).parent().remove();
+           }
         });
-        
         deleteIcon.appendTo(songRow);
     }
     

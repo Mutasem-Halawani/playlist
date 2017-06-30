@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class MusicPlayer {
+class MusicPlayer{
     
     constructor(text){
         this.text = text;
@@ -163,20 +163,20 @@ class MusicPlayer {
             e.currentTarget.closest('div#cancel-popup-container').remove();
     }
     }
-    previousPage(){
-        console.log('button clicked');
-//          var musicPlayer = new MusicPlayer();
-         $('body').empty();
-//    musicPlayer.buildHeader();
-//    musicPlayer.buildMusicPlayer();
     
-      var header = $('<header>').appendTo('body');
+    previousPage(){
+         $('body').empty();
+         
+        var header = $('<header>').appendTo('body');
         
         var link = $('<a>',{
             href : '#',
             id : 'add-new-playlist',
             text : 'Add new playlist',
-            click : this.addNewPlaylist
+            click : function(){
+                 var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
+                 newPlaylistPopup.buildPopup();    
+            }
         });
         link.appendTo(header);
         
@@ -219,6 +219,7 @@ class MusicPlayer {
          var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
             newPlaylistPopup.buildPopup();  
     }
+    
 }
 
 
