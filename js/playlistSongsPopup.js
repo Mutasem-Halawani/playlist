@@ -71,7 +71,9 @@ class PlaylistSongsPopup{
         
         var button = $('<button>',{
            id : 'finish-and-save',
-           text : 'Finish & Save'
+           text : 'Finish & Save',
+           type : 'sumbit',
+           form : 'add-playlist-songs-form'
         });
         
         button.appendTo(footer);

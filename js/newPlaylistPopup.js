@@ -71,7 +71,14 @@ class NewPlaylistPopup{
         var URLInput = $('<input>',{
            id : 'playlist-URL',
            type : 'text',
-           placeholder : 'http://'
+           placeholder : 'http://',
+           keyup : function(){
+               var src = $('input#playlist-URL').val();
+               $('img#add-album-image').attr('src',src);
+               $('img#add-album-image').on('error',function(){
+                   $('img#add-album-image').attr('src','http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg');
+               });
+           }
         });
         
          URLInput.appendTo(form);
@@ -92,6 +99,8 @@ class NewPlaylistPopup{
         var nextButton = $('<button>',{
            id : 'next',
            text : 'Next',
+           type : 'sumbit',
+           form : 'add-new-playlist-form',
            click : this.openNextPopup
         });
         
