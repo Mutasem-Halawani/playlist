@@ -14,3 +14,23 @@ $('a#add-new-playlist').on('click',function(){
 });
 
 
+//$.ajax({
+//    url : "C:/xampp\htdocs\playlist\public_html\playlist\html\header.html",
+//    method : 'GET',
+//    crossDomain: true,
+////    dataType: 'jsonp',
+//    success: print
+//});
+//
+//
+
+//$.ajax({
+//  url:  "C:/xampp/htdocs/playlist/public_html/playlist/api/playlist.php?type=playlist",
+//  dataType: 'jsonp',
+//  success: print
+//});
+
+
+//function print(data){
+//    console.log(data);
+//}

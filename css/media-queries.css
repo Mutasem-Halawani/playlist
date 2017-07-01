@@ -12,8 +12,56 @@ and open the template in the editor.
     div.music-player{
         display:initial;
     }
+    
+     img#add-album-image{
+        width: 100%;
+        height: 100%;
+    }
+    
+    div#add-new-playlist-content{
+        display: block;
+    }
+    
+    div.popup-modal-footer{
+        margin: 1em;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width:530px){
+    input#song-URL, input#song-name{
+        display: block;
+    }
+    
+    form#add-playlist-songs-form{
+        text-align: center;
+    }
+    
+    div.add-song-rows{
+        display: flex;
+        flex-direction: column;
+    }
+    
+     i#delete-row{
+        text-align: right;
+        padding: 1em;
+    }
+    
+    i#delete-row:hover{
+        transform: scale(1);
+    }
 }
 
 @media only screen and (max-width:680px){
-    
+    div#cancel-popup{
+        width: inherit;
+    }
 }
+
+@media only screen and (max-width:840px){
+    div#add-new-playlist-popup{
+        width: inherit;
+    }
+}
+
+

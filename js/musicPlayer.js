@@ -203,12 +203,23 @@ class MusicPlayer{
     changeIconToPlay(){
         $('i#play-album-music-player').addClass('show');
         $('i#pause').removeClass('show');
+             
     }
     
     changeIconToPause(){
         $('i#pause').addClass('show');
-         $('i#play-album-music-player').removeClass('show');
+        $('i#play-album-music-player').removeClass('show');
+//        var audio = $('audio');
+//        audio.play();
+//        console.log(audio);
     }
+//    
+//    playSong(){
+//    }
+//    
+//    pauseSong(){
+//        
+//    }
     
     addNewPlaylist(){
         var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
