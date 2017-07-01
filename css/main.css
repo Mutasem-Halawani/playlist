@@ -16,9 +16,9 @@ body{
     background-color:#000;
     font-family:arial;
     overflow-x: hidden;
-    min-width: 325px;
-     background-color:#00FFC2 !important;
-     margin: 0;
+    /*min-width: 325px;*/
+    background-color:#00FFC2 !important;
+    margin: 0;
 }
 
 header{
@@ -33,7 +33,7 @@ header{
 
 a#add-new-playlist{
     color:white !important;
-     text-decoration: none;
+    text-decoration: none;
 }
 
 a#add-new-playlist:hover{
@@ -83,13 +83,13 @@ section.album-cover:hover{
 }
 
 h3 span {
-  font: 2rem Monaco, MonoSpace;
-  height: 5.5em;
-  position: absolute;
-  left: 4.01em;
-  bottom:  4.2em;
-  transform-origin: bottom center;
-  font-size: 1.5em;
+    font: 2rem Monaco, MonoSpace;
+    height: 5.5em;
+    position: absolute;
+    left: 4.01em;
+    bottom:  4.2em;
+    transform-origin: bottom center;
+    font-size: 1.5em;
 }
 
 .char1 { transform: rotate(-40deg); }

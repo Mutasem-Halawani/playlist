@@ -9,9 +9,6 @@ and open the template in the editor.
 */
 
 @media only screen and (max-width:385px){
-    div.music-player{
-        display:initial;
-    }
     
      img#add-album-image{
         width: 100%;
@@ -29,6 +26,7 @@ and open the template in the editor.
 }
 
 @media only screen and (max-width:530px){
+    
     input#song-URL, input#song-name{
         display: block;
     }
@@ -53,8 +51,36 @@ and open the template in the editor.
 }
 
 @media only screen and (max-width:680px){
+    
+    section.music-player-album-cover{
+        height: 170px;
+        width: auto;
+    }
+    
     div#cancel-popup{
-        width: inherit;
+        width: auto;
+    }
+    
+    div.music-player{
+        width: auto;
+        background-color: transparent;
+        border-radius: 0;
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width:735px){   
+    main#music-player-container{
+        display: block;
+        text-align: center;  
+    }
+    
+    section.music-player-album-cover{
+        width:250px;
+        height:250px;
+    }
+    
+    div.music-player{
     }
 }
 
