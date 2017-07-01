@@ -59,8 +59,9 @@ main.all-albums{
 }
 
 section.album-cover{
-    background: url('http://egyptianstreets.com/wp-content/uploads/2016/12/Coldplay-feat.jpg') no-repeat center center;
-    /*background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWLVV1eZcBkkhVZMIZiwc1_-rsZqbBLqKY1AyiBnV9rkHP9x-T') no-repeat center center;*/
+    background-repeat : no-repeat;
+    background-position: center center;
+    background-size: cover;
     border-radius: 100%;
     width:300px;
     height: 300px;
@@ -82,7 +83,7 @@ section.album-cover:hover{
     position: relative;
 }
 
-h3 span {
+h3 {
     font: 2rem Monaco, MonoSpace;
     height: 5.5em;
     position: absolute;

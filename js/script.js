@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var albums = new MusicAlbum();
-albums.buildAlbum();
 
 $("h3").lettering();
 
 $('a#add-new-playlist').on('click',function(){
     var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
     newPlaylistPopup.buildPopup();
+});
+
+$.get( "api/playlist.php?type=playlist", function( data ) {
+    var albums = new MusicAlbum(data);
+    albums.buildAlbum(data);
+    console.log(data);
 });
 
 
@@ -23,14 +27,3 @@ $('a#add-new-playlist').on('click',function(){
 //});
 //
 //
-
-//$.ajax({
-//  url:  "C:/xampp/htdocs/playlist/public_html/playlist/api/playlist.php?type=playlist",
-//  dataType: 'jsonp',
-//  success: print
-//});
-
-
-//function print(data){
-//    console.log(data);
-//}

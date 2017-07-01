@@ -196,8 +196,11 @@ class MusicPlayer{
         });
         input.prependTo(label);
         
-        var albums = new MusicAlbum();
-        albums.buildAlbum();
+        $.get( "api/playlist.php?type=playlist", function( data ) {
+        var albums = new MusicAlbum(data);
+        albums.buildAlbum(data);
+        console.log(data);
+        });
     }
     
     changeIconToPlay(){

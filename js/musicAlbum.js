@@ -9,19 +9,27 @@ class MusicAlbum{
         this.text = text;
     }
     
-    buildAlbum(){
+    buildAlbum(data){
         var albumContainer = $('<main>',{
            'class' : 'all-albums'
         });
         albumContainer.appendTo('body');
         
+        for(let i=0;i<data.data.length;i++){
+//        console.log(data);
+//        console.log(data.data.length);
+//        console.log(data.data[0]);
         var album = $('<section>',{
+            'data-album-id' : data.data[i].id,
            'class' : 'album album-cover'
         });
+//        console.log(data.data[i].image);
+        album.css('background-image', 'url(' + data.data[i].image + ')');
         album.appendTo(albumContainer);
         
         var albumTitle = $('<h3>',{
-           'class' : 'album-title'
+           'class' : 'album-title',
+           text : data.data[i].name
         });
         albumTitle.appendTo(album);
         
@@ -29,28 +37,26 @@ class MusicAlbum{
         icons.appendTo(album);
         
          var deleteIcon = $('<i>',{
-            id : 'delete-album',
-            'class' : 'fa fa-times-circle-o',
+            'class' : 'fa fa-times-circle-o delete-album',
             'aria-hidden' : 'true',
             click : this.deleteAlbum
         });
         deleteIcon.appendTo(icons);
         
         var editIcon = $('<i>',{
-            id : 'edit-album',
-            'class' : 'fa fa-pencil',
+            'class' : 'fa fa-pencil edit-album',
             'aria-hidden' : 'true',
             click : this.editAlbum
         });
         editIcon.appendTo(icons);
         
         var playIcon = $('<i>',{
-            id : 'play-album',
-            'class' : 'fa fa-play-circle',
+            'class' : 'fa fa-play-circle play-album',
             'aria-hidden' : 'true',
-            click : this.playAlbum 
+            click : this.playAlbum
         });
         playIcon.appendTo(album);
+    }
     }
     
     playAlbum(){
