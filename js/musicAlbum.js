@@ -5,11 +5,12 @@
  */
 class MusicAlbum{
     
-    constructor(text){
-        this.text = text;
+    constructor(data){
+        this.data = data;
     }
     
     buildAlbum(data){
+      
         var albumContainer = $('<main>',{
            'class' : 'all-albums'
         });
@@ -35,12 +36,21 @@ class MusicAlbum{
         
         var icons = $('<div>');
         icons.appendTo(album);
-        
+         
          var deleteIcon = $('<i>',{
+//             id : data.data[i].id,
+//            'data-album-delete-id' : 
             'class' : 'fa fa-times-circle-o delete-album',
             'aria-hidden' : 'true',
-            click : this.deleteAlbum
-        });
+//            click : this.deleteAlbum.bind(this.data)
+            click : function(){
+//                 console.log($('i').attr('id'));
+                   console.log();
+                   var cancelPopup = new CancelPopup('Are you sure?',data.data[i].id);
+                   cancelPopup.buildPopup(data.data[i].id);
+            }
+//        });
+         });
         deleteIcon.appendTo(icons);
         
         var editIcon = $('<i>',{
@@ -51,20 +61,32 @@ class MusicAlbum{
         editIcon.appendTo(icons);
         
         var playIcon = $('<i>',{
+            'data-album-play-id' : data.data[i].id,
             'class' : 'fa fa-play-circle play-album',
             'aria-hidden' : 'true',
-            click : this.playAlbum
+//            click : this.playAlbum
+            click : function(){
+                console.log(data.data[i].id);
+                var musicPlayer = new MusicPlayer(data.data[i].id,data.data[i].image);
+                musicPlayer.clearHTML();
+                musicPlayer.buildHeader();
+                musicPlayer.buildMusicPlayer(data.data[i].id,data.data[i].image);
+            }
         });
         playIcon.appendTo(album);
+        
     }
     }
     
-    playAlbum(){
-        var musicPlayer = new MusicPlayer();
-        musicPlayer.clearHTML();
-        musicPlayer.buildHeader();
-        musicPlayer.buildMusicPlayer();
-    }
+//    playAlbum(data){
+////        console.log(data.data[i].id);
+//        console.log(this.data);
+//        console.log(data);
+//        var musicPlayer = new MusicPlayer();
+//        musicPlayer.clearHTML();
+//        musicPlayer.buildHeader();
+//        musicPlayer.buildMusicPlayer();
+//    }
     
     editAlbum(){
          var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
@@ -72,8 +94,11 @@ class MusicAlbum{
     }
     
     deleteAlbum(){
-        var cancelPopup = new CancelPopup('Are you sure?');
-             cancelPopup.buildPopup();
+//        console.log(data.data[i].id);
+////         console.log(this.data);
+////        console.log(this.data);
+////        var cancelPopup = new CancelPopup('Are you sure?',this.data);
+//        var cancelPopup = new CancelPopup('Are you sure?',this.data);
+//             cancelPopup.buildPopup(this.data);
     }
-    
 }

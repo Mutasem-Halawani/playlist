@@ -5,8 +5,11 @@
  */
 class MusicPlayer{
     
-    constructor(text){
-        this.text = text;
+    constructor(albumID,albumImg){
+        this.albumID = albumID;
+        this.albumImg = albumImg;
+        console.log(albumID);
+        console.log(albumImg);
     }
     
     clearHTML(){
@@ -43,7 +46,8 @@ class MusicPlayer{
         buttonText.appendTo(backButton);
     }
     
-    buildMusicPlayer(){
+    buildMusicPlayer(albumID,albumImg){
+         console.log(albumID);
         var main  = $('<main>',{
             id : 'music-player-container',
             'class' : 'music-player-main',
@@ -57,8 +61,9 @@ class MusicPlayer{
         musicPlayer.appendTo(main);
         
         var albumSection = $('<section>',{
-           'class' : 'album album-cover music-player-album-cover' 
+           'class' : 'album album-cover music-player-album-cover'
         });
+        albumSection.css('background-image', 'url(' + albumImg + ')');
         albumSection.appendTo(musicPlayer);
         
         var playIcon = $('<i>',{
@@ -132,12 +137,34 @@ class MusicPlayer{
             'class' : 'controls'
         });
         controls.appendTo(main);
-        
+        console.log(albumID);
         var deleteIcon = $('<i>',{
             id : 'music-play-delete-album',
             'class' : 'fa fa-times-circle-o',
             'aria-hidden' : 'true',
-            click: this.deleteAlbum.bind(this)
+//            click: this.deleteAlbum.bind(this)
+            click : function(){
+                var cancelPopup = new CancelPopup('Are you sure?',albumID);
+                   cancelPopup.buildPopup(albumID);
+            }
+//                let id = albumID;
+////                   console.log(this.data);
+//                   console.log(albumID);
+//                   console.log(albumID);
+////                   console.log(this.data);
+//                  $.ajax({
+//                    url: 'api/playlist.php?type=playlist&id=' + id,
+//                    type: 'DELETE',
+//                    success: function(){
+//                    alert('success');
+////                        $.get( "api/playlist.php?type=playlist", function(data) {
+////                            var albums = new MusicAlbum(data);
+////                            albums.buildAlbum(data);
+////                        });
+//                    }
+////            error: errorCallback || $.noop
+//                    });
+//            }
         });
         deleteIcon.appendTo(controls);
         
