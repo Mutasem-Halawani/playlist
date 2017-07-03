@@ -92,11 +92,11 @@ class MusicPlayer{
         });
         songMarquee.appendTo(playerSection);
         
-        var currentSong = $('<h5>',{
-            'class' : 'current-song',
-            text : 'Never Had A Friend Like Me'
-        });
-        currentSong.appendTo(songMarquee);
+//        var currentSong = $('<h5>',{
+//            'class' : 'current-song',
+//            text : $('li.music-songs-list-item')
+//        });
+//        currentSong.appendTo(songMarquee);
         
         var audioPlayer = $('<audio>',{
             'class' : 'audio-player',
@@ -115,25 +115,13 @@ class MusicPlayer{
             type : 'audio/mp3'
         });
         source2.appendTo(audioPlayer);
-//        this.buildMusicList.bind(this.albumID);
+
         this.buildMusicList(albumID);
         var musicList = $('<ol>',{
             'class' : 'music-songs-list'
         });
         musicList.appendTo(playerSection);
     
-//        var listItem1 = $('<li>',{
-//            'class' : 'music-songs-list-item',
-//            text : 'Never Had A Friend Like Me'
-//        });
-//        listItem1.appendTo(musicList);
-//        
-//        var listItem2 = $('<li>',{
-//            'class' : 'music-songs-list-item',
-//            text : 'Only God Can Judge'
-//        });
-//        listItem2.appendTo(musicList);
-        
         var controls = $('<div>',{
             'class' : 'controls'
         });
@@ -183,9 +171,17 @@ class MusicPlayer{
                     });
                     listItem.appendTo(list);
                 }
+                var songMarquee = $('div.song-marquee');
+                console.log(songMarquee);
+                var firstSong = $('li.music-songs-list-item').first().text();
+                console.log(firstSong);
+                var currentSong = $('<h5>',{
+                    'class' : 'current-song',
+                    text : firstSong
+                 });
+                currentSong.appendTo(songMarquee);
                 }
            });
-
     }
     
     deleteAlbum(){
@@ -273,18 +269,4 @@ class MusicPlayer{
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
