@@ -92,31 +92,25 @@ class MusicPlayer{
         });
         songMarquee.appendTo(playerSection);
         
-//        var currentSong = $('<h5>',{
-//            'class' : 'current-song',
-//            text : $('li.music-songs-list-item')
-//        });
-//        currentSong.appendTo(songMarquee);
-        
         var audioPlayer = $('<audio>',{
             'class' : 'audio-player',
             controls : true
         });
         audioPlayer.appendTo(playerSection);
         
-        var source1 = $('<source>',{
-            src : 'songs/Tupac - Never Had A Friend Like Me (HQ).mp3',
-            type : 'audio/mp3'
-        });
-        source1.appendTo(audioPlayer);
-        
-        var source2 = $('<source>',{
-            src : 'songs/Tupac - Only God Can Judge Me.mp3',
-            type : 'audio/mp3'
-        });
-        source2.appendTo(audioPlayer);
+//        var source1 = $('<source>',{
+//            src : 'songs/2pac/Tupac - Never Had A Friend Like Me.mp3',
+//            type : 'audio/mp3'
+//        });
+//        source1.appendTo(audioPlayer);
+//        
+//        var source2 = $('<source>',{
+//            src : 'songs/2pac/Tupac - Only God Can Judge Me.mp3',
+//            type : 'audio/mp3'
+//        });
+//        source2.appendTo(audioPlayer);
 
-        this.buildMusicList(albumID);
+       
         var musicList = $('<ol>',{
             'class' : 'music-songs-list'
         });
@@ -146,6 +140,8 @@ class MusicPlayer{
             click : this.editAlbum
         });
         editIcon.appendTo(controls);
+        
+        this.buildMusicList(albumID);
     }
     
     buildMusicList(albumID){
@@ -163,23 +159,32 @@ class MusicPlayer{
                 
                 for(let i=0;i<object.length;i++){
                     var list = $('ol.music-songs-list');
-                    console.log($('ol.music-songs-list'));
-
                     var listItem = $('<li>',{
                         'class' : 'music-songs-list-item',
                         text : object[i].name
                     });
                     listItem.appendTo(list);
                 }
+                
                 var songMarquee = $('div.song-marquee');
-                console.log(songMarquee);
                 var firstSong = $('li.music-songs-list-item').first().text();
-                console.log(firstSong);
                 var currentSong = $('<h5>',{
                     'class' : 'current-song',
                     text : firstSong
                  });
                 currentSong.appendTo(songMarquee);
+                
+                for(let i=0;i<object.length;i++){
+                    var audio = $('audio.audio-player');
+                    var source = $('<source>',{
+                        src : object[i].url,
+                        type : 'audio/mp3'
+                    });
+                    source.appendTo(audio);
+
+                    console.log(object[0].url);
+                }
+               
                 }
            });
     }
