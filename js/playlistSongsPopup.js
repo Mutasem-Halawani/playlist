@@ -73,10 +73,31 @@ class PlaylistSongsPopup{
            id : 'finish-and-save',
            text : 'Finish & Save',
            type : 'sumbit',
-           form : 'add-playlist-songs-form'
+           form : 'add-playlist-songs-form',
+           click : function(){
+               console.log('hi');
+               var songName = $('input.song-name');
+               var songURL = $('input.song-URL');
+               $('div.add-song-rows').on('load',function(index,element){
+                    console.log(index);
+                    console.log(element);
+               }).each(function(index,element){
+                   return(index,element);
+//                   var songs = [];
+//                    console.log(index);
+//                    console.log(element);
+////                    var htmlObject = element;
+//                   
+////                    console.log(htmlObject);
+//                    console.log(typeof(element));
+               });
+//               console.log(songName.val());
+//               console.log(songURL.val());
+           }
         });
         
         button.appendTo(footer);
+        this.addRow();
     }
     
     removePopup(e){
@@ -93,14 +114,15 @@ class PlaylistSongsPopup{
         songRow.appendTo('form#add-playlist-songs-form');
         
         var URLLabel = $('<label>',{
-            for : 'song-URL',
+//            for : 'song-URL',
             text : 'Song URL'
         });
         
         URLLabel.appendTo($(songRow));
         
         var URLInput = $('<input>',{
-           id : 'song-URL',
+//           id : 'song-URL',
+           'class' : 'song-URL',
            type : 'text',
            placeholder : 'http://'
         });
@@ -108,14 +130,15 @@ class PlaylistSongsPopup{
         URLInput.appendTo($(songRow));
         
          var nameLabel = $('<label>',{
-            for : 'song-name',
+//            for : 'song-name',
             text : 'Song Name'
         });
         
         nameLabel.appendTo($(songRow));
         
         var nameInput = $('<input>',{
-           id : 'song-name',
+//           id : 'song-name',
+           'class' : 'song-name',
            type : 'text',
            placeholder : 'e.g. Yellow'
         });
@@ -133,8 +156,8 @@ class PlaylistSongsPopup{
         deleteIcon.appendTo(songRow);
     }
     
-    removeRow(){
-        console.log('hi');
-    }
+//    removeRow(){
+//        console.log('hi');
+//    }
 }
 

@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-$("h3").lettering();
+$(document).ready(function(){
+//            $('h3.album-title').lettering();
+            $('h3.album-title').circleType({radius: 200});
+//            $('h3.album-title').circleType();
+//            $('h3.album-title').circleType({fluid:true});;
+        });
 
 $('a#add-new-playlist').on('click',function(){
     var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');

@@ -83,24 +83,29 @@ section.album-cover:hover{
     position: relative;
 }
 
+main.all-albums section.album-cover{
+    margin: 3em;
+}
+    
 h3 {
     font: 2rem Monaco, MonoSpace;
-    height: 5.5em;
+    /*height: 5.5em;*/
     position: absolute;
-    left: 4.01em;
-    bottom:  4.2em;
-    transform-origin: bottom center;
-    font-size: 1.5em;
+    left: 0.7em;
+    bottom:  6em;
+    /*transform-origin: bottom center;*/
+    font-size: 2em;
+    /*margin: 4em;*/
 }
 
-.char1 { transform: rotate(-40deg); }
+/*.char1 { transform: rotate(-40deg); }
 .char2 { transform: rotate(-30deg); }
 .char3 { transform: rotate(-20deg); }
 .char4 { transform: rotate(-10deg); }
 .char5 { transform: rotate(0deg); }
 .char6 { transform: rotate(10deg); }
 .char7 { transform: rotate(20deg); }
-.char8 { transform: rotate(30deg); }
+.char8 { transform: rotate(30deg); }*/
 
 
 

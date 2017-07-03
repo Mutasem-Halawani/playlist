@@ -81,6 +81,7 @@ class NewPlaylistPopup{
            }
         });
         
+        
          URLInput.appendTo(form);
          
           var img = $('<img>',{
@@ -101,7 +102,20 @@ class NewPlaylistPopup{
            text : 'Next',
            type : 'sumbit',
            form : 'add-new-playlist-form',
-           click : this.openNextPopup
+//           click : this.openNextPopup
+           click : function(){
+               var albumName = nameInput.val();
+               var albumURL = URLInput.val();
+               sessionStorage.setItem('albumName', albumName);
+               sessionStorage.setItem('albumURL', albumURL);
+//               sessionStorage.getItem('albumURL', 'albumName');
+//               console.log(albumName);
+//               console.log(albumURL);
+//               console.log(sessionStorage);
+                var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
+                playlistSongsPopup.buildPopup();
+               
+           }
         });
         
         nextButton.appendTo(footer);
@@ -113,6 +127,10 @@ class NewPlaylistPopup{
         });
         
         resetButton.appendTo(footer);
+    }
+    
+    updateInfo(info){
+        console.log(info);
     }
     
     removePopup(e){
