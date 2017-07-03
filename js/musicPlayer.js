@@ -115,29 +115,30 @@ class MusicPlayer{
             type : 'audio/mp3'
         });
         source2.appendTo(audioPlayer);
-        
+//        this.buildMusicList.bind(this.albumID);
+        this.buildMusicList(albumID);
         var musicList = $('<ol>',{
             'class' : 'music-songs-list'
         });
         musicList.appendTo(playerSection);
-        
-        var listItem1 = $('<li>',{
-            'class' : 'music-songs-list-item',
-            text : 'Never Had A Friend Like Me'
-        });
-        listItem1.appendTo(musicList);
-        
-        var listItem2 = $('<li>',{
-            'class' : 'music-songs-list-item',
-            text : 'Only God Can Judge'
-        });
-        listItem2.appendTo(musicList);
+    
+//        var listItem1 = $('<li>',{
+//            'class' : 'music-songs-list-item',
+//            text : 'Never Had A Friend Like Me'
+//        });
+//        listItem1.appendTo(musicList);
+//        
+//        var listItem2 = $('<li>',{
+//            'class' : 'music-songs-list-item',
+//            text : 'Only God Can Judge'
+//        });
+//        listItem2.appendTo(musicList);
         
         var controls = $('<div>',{
             'class' : 'controls'
         });
         controls.appendTo(main);
-        console.log(albumID);
+
         var deleteIcon = $('<i>',{
             id : 'music-play-delete-album',
             'class' : 'fa fa-times-circle-o',
@@ -147,24 +148,6 @@ class MusicPlayer{
                 var cancelPopup = new CancelPopup('Are you sure?',albumID);
                    cancelPopup.buildPopup(albumID);
             }
-//                let id = albumID;
-////                   console.log(this.data);
-//                   console.log(albumID);
-//                   console.log(albumID);
-////                   console.log(this.data);
-//                  $.ajax({
-//                    url: 'api/playlist.php?type=playlist&id=' + id,
-//                    type: 'DELETE',
-//                    success: function(){
-//                    alert('success');
-////                        $.get( "api/playlist.php?type=playlist", function(data) {
-////                            var albums = new MusicAlbum(data);
-////                            albums.buildAlbum(data);
-////                        });
-//                    }
-////            error: errorCallback || $.noop
-//                    });
-//            }
         });
         deleteIcon.appendTo(controls);
         
@@ -175,6 +158,34 @@ class MusicPlayer{
             click : this.editAlbum
         });
         editIcon.appendTo(controls);
+    }
+    
+    buildMusicList(albumID){
+        console.log('list');
+        console.log(albumID);
+        
+           $.ajax({
+                url : "api/playlist.php?&type=songs&id=" + albumID ,
+                method:'GET',
+                success: function(data){
+                console.log(data);
+                console.log(data.data.songs);
+                var object = data.data.songs;
+                console.log(object[0].name);
+                
+                for(let i=0;i<object.length;i++){
+                    var list = $('ol.music-songs-list');
+                    console.log($('ol.music-songs-list'));
+
+                    var listItem = $('<li>',{
+                        'class' : 'music-songs-list-item',
+                        text : object[i].name
+                    });
+                    listItem.appendTo(list);
+                }
+                }
+           });
+
     }
     
     deleteAlbum(){

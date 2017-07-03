@@ -11,19 +11,26 @@ $('a#add-new-playlist').on('click',function(){
     newPlaylistPopup.buildPopup();
 });
 
+
 $.get( "api/playlist.php?type=playlist", function(data) {
     var albums = new MusicAlbum(data);
     albums.buildAlbum(data);
     console.log(data);
 });
 
-
 //$.ajax({
-//    url : "C:/xampp\htdocs\playlist\public_html\playlist\html\header.html",
-//    method : 'GET',
-//    crossDomain: true,
-////    dataType: 'jsonp',
-//    success: print
+//    url : "api/playlist.php?&type=songs&id=15",
+//    method:'GET',
+//    success: function(data){
+//    console.log(data);
+//    console.log(data.data.songs);
+//    var json = data.data.songs;
+////    var data = eval('(' + json + ')');
+////    console.log(typeof(json));
+////    console.log(typeof(data));
+//    console.log(json[0]);
+////    console.log(data);
+////    console.log(data[0].name);
+//    }
 //});
-//
-//
+
