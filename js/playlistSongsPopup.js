@@ -75,29 +75,62 @@ class PlaylistSongsPopup{
            type : 'sumbit',
            form : 'add-playlist-songs-form',
            click : function(){
-               console.log('hi');
-               var songName = $('input.song-name');
-               var songURL = $('input.song-URL');
-               $('div.add-song-rows').on('load',function(index,element){
-                    console.log(index);
-                    console.log(element);
-               }).each(function(index,element){
-                   return(index,element);
-//                   var songs = [];
-//                    console.log(index);
-//                    console.log(element);
-////                    var htmlObject = element;
-//                   
-////                    console.log(htmlObject);
-//                    console.log(typeof(element));
-               });
-//               console.log(songName.val());
-//               console.log(songURL.val());
-           }
+                var allInputValues = [];
+                var arrayofArrays = [];
+                var allSongsArray = [];
+                
+                //loop through all form's inputs 
+                $('input', $('form#add-playlist-songs-form')).each(function () {
+                    var inputValues= ($(this)[0]).value;
+                    allInputValues.push(inputValues);
+                });
+                
+                //add double quotes to all values
+                var songsArrayWithDoubleQuotes = allInputValues.map(function(a) {
+                    return '"' +  a + '"';
+                 });
+                 
+                //create an array of each song
+                for(let i=0;i<songsArrayWithDoubleQuotes.length;i=i+2){
+                    var slicedArray = songsArrayWithDoubleQuotes.slice(i,i+2);
+                    arrayofArrays.push(slicedArray);
+                }
+
+                //change the structure of each song array & turn it into a string
+                for(let i=0;i<arrayofArrays.length;i++){
+                    if(arrayofArrays.length > 2){
+                        var oneSongAsArray = arrayofArrays[i].splice(0,arrayofArrays.length);
+                    }
+                    else {
+                        var oneSongAsArray = arrayofArrays[i].splice(0);
+                    }
+                    oneSongAsArray.unshift('{ "name":');
+                    oneSongAsArray.splice(2, 0, ', "url":');
+                    oneSongAsArray.push('}');
+                    var string = oneSongAsArray.join('');
+                    var myobject = JSON.parse(string);
+                    allSongsArray.push(myobject);
+                }
+                
+                var albumName = sessionStorage.getItem('albumName');
+                var albumURL = sessionStorage.getItem('albumURL');
+                 $.ajax({
+                    url : 'api/playlist.php?type=playlist',
+                    method:'POST',
+                    data : {
+                        "name" : albumName,
+                        "image" : albumURL,
+                        "songs" : allSongsArray      
+                    },
+                    success: function(data){
+                            alert('success');
+                    }
+                    });
+           }    
         });
         
         button.appendTo(footer);
-        this.addRow();
+//        this.addRow();
     }
     
     removePopup(e){
@@ -114,14 +147,12 @@ class PlaylistSongsPopup{
         songRow.appendTo('form#add-playlist-songs-form');
         
         var URLLabel = $('<label>',{
-//            for : 'song-URL',
             text : 'Song URL'
         });
         
         URLLabel.appendTo($(songRow));
         
         var URLInput = $('<input>',{
-//           id : 'song-URL',
            'class' : 'song-URL',
            type : 'text',
            placeholder : 'http://'
@@ -130,14 +161,12 @@ class PlaylistSongsPopup{
         URLInput.appendTo($(songRow));
         
          var nameLabel = $('<label>',{
-//            for : 'song-name',
             text : 'Song Name'
         });
         
         nameLabel.appendTo($(songRow));
         
         var nameInput = $('<input>',{
-//           id : 'song-name',
            'class' : 'song-name',
            type : 'text',
            placeholder : 'e.g. Yellow'
@@ -155,6 +184,10 @@ class PlaylistSongsPopup{
         });
         deleteIcon.appendTo(songRow);
     }
+    
+//    updateServer(songs){
+//        console.log(songs);
+//    }
     
 //    removeRow(){
 //        console.log('hi');

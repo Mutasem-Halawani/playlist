@@ -6,6 +6,7 @@
 $(document).ready(function(){
 //            $('h3.album-title').lettering();
             $('h3.album-title').circleType({radius: 200});
+//            $('h3.album-title').circleType({fitText:true, radius: 200});
 //            $('h3.album-title').circleType();
 //            $('h3.album-title').circleType({fluid:true});;
         });
