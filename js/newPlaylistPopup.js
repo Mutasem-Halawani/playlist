@@ -11,7 +11,6 @@ class NewPlaylistPopup{
     }
     
     buildPopup(albumID){
-        
 //        console.log('albumID' ,albumID);
         var popUpContainer = $('<div>',{
             id : 'new-playlist-popup-container',
@@ -88,7 +87,7 @@ class NewPlaylistPopup{
 //                playlistSongsPopup.buildPopup();
                 if(albumID !== undefined){
                     var playlistSongsPopup = new PlaylistSongsPopup('Edit Playlist Songs');
-                        playlistSongsPopup.buildPopup();
+                        playlistSongsPopup.buildPopup(albumID);
                 }
                 else{
                     var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
