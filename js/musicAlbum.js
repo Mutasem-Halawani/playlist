@@ -10,7 +10,7 @@ class MusicAlbum{
     }
     
     buildAlbum(data){
-      
+
         var albumContainer = $('<main>',{
            'class' : 'all-albums'
         });
@@ -74,7 +74,6 @@ class MusicAlbum{
             }
         });
         playIcon.appendTo(album);
-        
     }
     }
     
@@ -90,7 +89,7 @@ class MusicAlbum{
     
     editAlbum(){
          var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
-            newPlaylistPopup.buildPopup();  
+            newPlaylistPopup.buildPopup(data);  
     }
     
     deleteAlbum(){
@@ -101,4 +100,5 @@ class MusicAlbum{
 //        var cancelPopup = new CancelPopup('Are you sure?',this.data);
 //             cancelPopup.buildPopup(this.data);
     }
+    
 }

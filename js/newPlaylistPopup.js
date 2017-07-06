@@ -10,7 +10,9 @@ class NewPlaylistPopup{
         this.text = text;
     }
     
-    buildPopup(){
+    buildPopup(albumID){
+        
+//        console.log('albumID' ,albumID);
         var popUpContainer = $('<div>',{
             id : 'new-playlist-popup-container',
            'class': 'popup-container',
@@ -29,72 +31,42 @@ class NewPlaylistPopup{
             'class' : 'popup-modal-header',
             text : this.text
         });
-        
         header.appendTo(popUp);
-        
         
         var content = $('<div>',{
            id : 'add-new-playlist-content', 
            'class' : 'popup-modal-content'
         });
-        
         content.appendTo(popUp);
         
         var form = $('<form>',{
             id: 'add-new-playlist-form'
         });
-        
         form.appendTo(content);
         
         var nameLabel = $('<label>',{
+            'class' : 'name-label',
             for : 'playlist-name',
             text : 'Playlist name'
         });
-        
         nameLabel.appendTo(form);
         
-        var nameInput = $('<input>',{
-           id : 'playlist-name',
-           type : 'text',
-           placeholder : 'e.g. New Pop Songs'
-        });
-        
-        nameInput.appendTo(form);
-        
-         var URLLabel = $('<label>',{
+        var URLLabel = $('<label>',{
+            'class' : 'url-label',
             for : 'playlist-URL',
             text : 'Playlist URL'
         });
-        
         URLLabel.appendTo(form);
         
-        var URLInput = $('<input>',{
-           id : 'playlist-URL',
-           type : 'text',
-           placeholder : 'http://',
-           keyup : function(){
-               var src = $('input#playlist-URL').val();
-               $('img#add-album-image').attr('src',src);
-               $('img#add-album-image').on('error',function(){
-                   $('img#add-album-image').attr('src','http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg');
-               });
-           }
-        });
-        
-        
-         URLInput.appendTo(form);
-         
-          var img = $('<img>',{
+        var img = $('<img>',{
             id : "add-album-image",
             src : 'http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg'
          });
-         
          img.appendTo(content);
          
-         var footer = $('<div>',{
+        var footer = $('<div>',{
             'class' :  'popup-modal-footer'
          });
-         
          footer.appendTo(popUp);
         
         var nextButton = $('<button>',{
@@ -104,34 +76,76 @@ class NewPlaylistPopup{
            form : 'add-new-playlist-form',
 //           click : this.openNextPopup
            click : function(){
-               var albumName = nameInput.val();
-               var albumURL = URLInput.val();
+               var albumName = $('input#playlist-name').val();
+               var albumURL = $('input#playlist-URL').val();
                sessionStorage.setItem('albumName', albumName);
                sessionStorage.setItem('albumURL', albumURL);
 //               sessionStorage.getItem('albumURL', 'albumName');
 //               console.log(albumName);
 //               console.log(albumURL);
 //               console.log(sessionStorage);
-                var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
-                playlistSongsPopup.buildPopup();
-               
+//                var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
+//                playlistSongsPopup.buildPopup();
+                if(albumID !== undefined){
+                    var playlistSongsPopup = new PlaylistSongsPopup('Edit Playlist Songs');
+                        playlistSongsPopup.buildPopup();
+                }
+                else{
+                    var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
+                        playlistSongsPopup.buildPopup();
+                }
            }
         });
-        
         nextButton.appendTo(footer);
         
         var resetButton = $('<button>',{
-           id : 'reset-feilds',
-           text : 'Reset fields',
-           click : this.clearFields.bind(this)
+            id : 'reset-feilds',
+            text : 'Reset fields',
+            click : this.clearFields
         });
-        
         resetButton.appendTo(footer);
+        this.updateInfo(albumID);
     }
     
-    updateInfo(info){
-        console.log(info);
-    }
+    updateInfo(albumID){
+            $.ajax({
+                url : "api/playlist.php?type=playlist&id=" + albumID ,
+                method:'GET',
+                success: function(data){
+                var nameInput = $('<input>',{
+                    id : 'playlist-name',
+                    type : 'text',
+                    placeholder : 'e.g. New Pop Songs',
+                    value : data.data.name
+                });     
+                var nameLabel = $('label.name-label');
+                    nameInput.insertAfter(nameLabel); 
+                var URLInput = $('<input>',{
+                    id : 'playlist-URL',
+                    type : 'text',
+                    placeholder : 'http://',
+                    value : data.data.image,
+                    ready : function(){
+                        var src = $('input#playlist-URL').val();
+                        $('img#add-album-image').attr('src',src);
+                         $('img#add-album-image').on('error',function(){
+                            $('img#add-album-image').attr('src','http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg');
+                        });
+                    },
+                    keyup : function(){
+                        var src = $('input#playlist-URL').val();
+                        $('img#add-album-image').attr('src',src);
+                        $('img#add-album-image').on('error',function(){
+                            $('img#add-album-image').attr('src','http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg');
+                        });
+                    }
+                 });
+                 
+                var URLLabel = $('label.url-label');
+                    URLInput.insertAfter(URLLabel); 
+                }
+                });
+            }
     
     removePopup(e){
         if (e.target.id === "new-playlist-popup-container"){
@@ -142,12 +156,20 @@ class NewPlaylistPopup{
        }
    }
        
-    openNextPopup(e){
-        var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
-        playlistSongsPopup.buildPopup();
-    }
+//    openNextPopup(e){
+//        
+//        if(albumID !== undefined){
+//            var playlistSongsPopup = new PlaylistSongsPopup('Edit Playlist Songs');
+//            playlistSongsPopup.buildPopup();
+//        }
+//        else{
+//            var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
+//            playlistSongsPopup.buildPopup();
+//        }
+//    }
     
     clearFields(){
-        $("form#add-new-playlist-form")[0].reset();
+        $('input#playlist-name').val('');
+        $('input#playlist-URL').val('');
     }
 }

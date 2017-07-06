@@ -8,8 +8,8 @@ class MusicPlayer{
     constructor(albumID,albumImg){
         this.albumID = albumID;
         this.albumImg = albumImg;
-        console.log(albumID);
-        console.log(albumImg);
+//        console.log(albumID);
+//        console.log(albumImg);
     }
     
     clearHTML(){
@@ -47,7 +47,7 @@ class MusicPlayer{
     }
     
     buildMusicPlayer(albumID,albumImg){
-         console.log(albumID);
+//         console.log(albumID);
         var main  = $('<main>',{
             id : 'music-player-container',
             'class' : 'music-player-main',
@@ -97,19 +97,6 @@ class MusicPlayer{
             controls : true
         });
         audioPlayer.appendTo(playerSection);
-        
-//        var source1 = $('<source>',{
-//            src : 'songs/2pac/Tupac - Never Had A Friend Like Me.mp3',
-//            type : 'audio/mp3'
-//        });
-//        source1.appendTo(audioPlayer);
-//        
-//        var source2 = $('<source>',{
-//            src : 'songs/2pac/Tupac - Only God Can Judge Me.mp3',
-//            type : 'audio/mp3'
-//        });
-//        source2.appendTo(audioPlayer);
-
        
         var musicList = $('<ol>',{
             'class' : 'music-songs-list'
@@ -137,7 +124,12 @@ class MusicPlayer{
             id : 'music-play-edit-album',
             'class' : 'fa fa-pencil',
             'aria-hidden' : 'true',
-            click : this.editAlbum
+            click : function(){
+//                console.log(albumID);
+//                console.log('albumID');
+                var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
+                newPlaylistPopup.buildPopup(albumID);  
+            }
         });
         editIcon.appendTo(controls);
         
@@ -145,17 +137,17 @@ class MusicPlayer{
     }
     
     buildMusicList(albumID){
-        console.log('list');
-        console.log(albumID);
+//        console.log('list');
+//        console.log(albumID);
         
            $.ajax({
                 url : "api/playlist.php?&type=songs&id=" + albumID ,
                 method:'GET',
                 success: function(data){
-                console.log(data);
-                console.log(data.data.songs);
+//                console.log(data);
+//                console.log(data.data.songs);
                 var object = data.data.songs;
-                console.log(object[0].name);
+//                console.log(object[0].name);
                 
                 for(let i=0;i<object.length;i++){
                     var list = $('ol.music-songs-list');
@@ -184,7 +176,6 @@ class MusicPlayer{
 
                     console.log(object[0].url);
                 }
-               
                 }
            });
     }
@@ -238,7 +229,7 @@ class MusicPlayer{
         $.get( "api/playlist.php?type=playlist", function( data ) {
         var albums = new MusicAlbum(data);
         albums.buildAlbum(data);
-        console.log(data);
+//        console.log(data);
         });
     }
     
@@ -267,11 +258,14 @@ class MusicPlayer{
         var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
             newPlaylistPopup.buildPopup();    
     }
-    
+//    
     editAlbum(){
+//        console.log('albumID');
+//        console.log(this.albumID);
+//        console.log(albumID);
          var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
-            newPlaylistPopup.buildPopup();  
+            newPlaylistPopup.buildPopup(albumID);  
     }
-    
+//    
 }
 
