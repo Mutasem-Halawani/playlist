@@ -8,8 +8,6 @@ class MusicPlayer{
     constructor(albumID,albumImg){
         this.albumID = albumID;
         this.albumImg = albumImg;
-//        console.log(albumID);
-//        console.log(albumImg);
     }
     
     clearHTML(){
@@ -47,7 +45,6 @@ class MusicPlayer{
     }
     
     buildMusicPlayer(albumID,albumImg){
-//         console.log(albumID);
         var main  = $('<main>',{
             id : 'music-player-container',
             'class' : 'music-player-main',
@@ -112,7 +109,6 @@ class MusicPlayer{
             id : 'music-play-delete-album',
             'class' : 'fa fa-times-circle-o',
             'aria-hidden' : 'true',
-//            click: this.deleteAlbum.bind(this)
             click : function(){
                 var cancelPopup = new CancelPopup('Are you sure?',albumID);
                    cancelPopup.buildPopup(albumID);
@@ -125,8 +121,6 @@ class MusicPlayer{
             'class' : 'fa fa-pencil',
             'aria-hidden' : 'true',
             click : function(){
-//                console.log(albumID);
-//                console.log('albumID');
                 var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
                 newPlaylistPopup.buildPopup(albumID);  
             }
@@ -137,47 +131,41 @@ class MusicPlayer{
     }
     
     buildMusicList(albumID){
-//        console.log('list');
-//        console.log(albumID);
-        
-           $.ajax({
-                url : "api/playlist.php?&type=songs&id=" + albumID ,
-                method:'GET',
-                success: function(data){
-//                console.log(data);
-//                console.log(data.data.songs);
-                var object = data.data.songs;
-//                console.log(object[0].name);
-                
-                for(let i=0;i<object.length;i++){
-                    var list = $('ol.music-songs-list');
-                    var listItem = $('<li>',{
-                        'class' : 'music-songs-list-item',
-                        text : object[i].name
-                    });
-                    listItem.appendTo(list);
-                }
-                
-                var songMarquee = $('div.song-marquee');
-                var firstSong = $('li.music-songs-list-item').first().text();
-                var currentSong = $('<h5>',{
-                    'class' : 'current-song',
-                    text : firstSong
-                 });
-                currentSong.appendTo(songMarquee);
-                
-                for(let i=0;i<object.length;i++){
-                    var audio = $('audio.audio-player');
-                    var source = $('<source>',{
-                        src : object[i].url,
-                        type : 'audio/mp3'
-                    });
-                    source.appendTo(audio);
+        $.ajax({
+             url : "api/playlist.php?&type=songs&id=" + albumID ,
+             method:'GET',
+             success: function(data){
+             var object = data.data.songs;
 
-                    console.log(object[0].url);
-                }
-                }
-           });
+             for(let i=0;i<object.length;i++){
+                 var list = $('ol.music-songs-list');
+                 var listItem = $('<li>',{
+                     'class' : 'music-songs-list-item',
+                     text : object[i].name
+                 });
+                 listItem.appendTo(list);
+             }
+
+             var songMarquee = $('div.song-marquee');
+             var firstSong = $('li.music-songs-list-item').first().text();
+             var currentSong = $('<h5>',{
+                 'class' : 'current-song',
+                 text : firstSong
+              });
+             currentSong.appendTo(songMarquee);
+
+             for(let i=0;i<object.length;i++){
+                 var audio = $('audio.audio-player');
+                 var source = $('<source>',{
+                     src : object[i].url,
+                     type : 'audio/mp3'
+                 });
+                 source.appendTo(audio);
+
+                 console.log(object[0].url);
+             }
+             }
+        });
     }
     
     deleteAlbum(){
@@ -229,7 +217,6 @@ class MusicPlayer{
         $.get( "api/playlist.php?type=playlist", function( data ) {
         var albums = new MusicAlbum(data);
         albums.buildAlbum(data);
-//        console.log(data);
         });
     }
     
@@ -242,30 +229,16 @@ class MusicPlayer{
     changeIconToPause(){
         $('i#pause').addClass('show');
         $('i#play-album-music-player').removeClass('show');
-//        var audio = $('audio');
-//        audio.play();
-//        console.log(audio);
     }
-//    
-//    playSong(){
-//    }
-//    
-//    pauseSong(){
-//        
-//    }
     
     addNewPlaylist(){
         var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
             newPlaylistPopup.buildPopup();    
     }
-//    
+    
     editAlbum(){
-//        console.log('albumID');
-//        console.log(this.albumID);
-//        console.log(albumID);
          var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
             newPlaylistPopup.buildPopup(albumID);  
     }
-//    
 }
 

@@ -11,7 +11,6 @@ class PlaylistSongsPopup{
     }
     
     buildPopup(albumID){
-//        console.log(albumID);
         var popUpContainer = $('<div>',{
             id : 'playlist-songs-popup-container',
            'class': 'popup-container',
@@ -42,7 +41,6 @@ class PlaylistSongsPopup{
             id: 'add-playlist-songs-form'
         });
         form.appendTo(content);
-//        this.addRow();
          
         var footer = $('<div>',{
              id : 'add-playlist-songs-popup-modal-footer',
@@ -99,8 +97,8 @@ class PlaylistSongsPopup{
                     else {
                         var oneSongAsArray = arrayofArrays[i].splice(0);
                     }
-                    oneSongAsArray.unshift('{ "name":');
-                    oneSongAsArray.splice(2, 0, ', "url":');
+                    oneSongAsArray.unshift('{ "url":');
+                    oneSongAsArray.splice(2, 0, ', "name":');
                     oneSongAsArray.push('}');
                     var string = oneSongAsArray.join('');
                     var myobject = JSON.parse(string);
@@ -109,81 +107,42 @@ class PlaylistSongsPopup{
                 
                 var albumName = sessionStorage.getItem('albumName');
                 var albumURL = sessionStorage.getItem('albumURL');
-                 $.ajax({
-                    url : 'api/playlist.php?type=playlist',
-                    method:'POST',
-                    data : {
-                        "name" : albumName,
-                        "image" : albumURL,
-                        "songs" : allSongsArray      
-                    },
-                    success: function(data){
-                            alert('success');
-                    }
+                console.log(albumID, albumID,albumID,albumID);
+                
+                if (albumID !== undefined){
+                    $.ajax({
+                       url : 'api/playlist.php?type=songs&id=' + albumID,
+                       method:'POST',
+                       data : {
+                           "songs" : allSongsArray      
+                       },
+                       success: function(data){
+                               alert('success');
+                       }
                     });
+                }
+                else {
+                    $.ajax({
+                       url : 'api/playlist.php?type=playlist',
+                       method:'POST',
+                       data : {
+                           "name" : albumName,
+                           "image" : albumURL,
+                           "songs" : allSongsArray      
+                       },
+                       success: function(data){
+                               alert('success');
+                       }
+                    });
+                }
            }    
         });
         button.appendTo(footer);
-//        this.addRow(albumID);
 
-
-
-
-
-//this.getExistingSongs().bind(albumID);
-//function getExistingSongs(albumID){
-//            console.log(albumID);
-//           $.ajax({
-//                url : "api/playlist.php?&type=songs&id=" + albumID ,
-//                method:'GET',
-//                success: function(data){
-////                console.log(data);
-////                console.log(data.data.songs);
-//                var object = data.data.songs;
-////                console.log(object[0].name);
-//                
-//                for(let i=0;i<object.length;i++){
-//                    var list = $('ol.music-songs-list');
-//                    var listItem = $('<li>',{
-//                        'class' : 'music-songs-list-item',
-//                        text : object[i].name
-//                    });
-//                    listItem.appendTo(list);
-//                }
-//                
-//                var songMarquee = $('div.song-marquee');
-//                var firstSong = $('li.music-songs-list-item').first().text();
-//                var currentSong = $('<h5>',{
-//                    'class' : 'current-song',
-//                    text : firstSong
-//                 });
-//                currentSong.appendTo(songMarquee);
-//                
-//                for(let i=0;i<object.length;i++){
-//                    var audio = $('audio.audio-player');
-//                    var source = $('<source>',{
-//                        src : object[i].url,
-//                        type : 'audio/mp3'
-//                    });
-//                    source.appendTo(audio);
-//
-//                    console.log(object[0].url);
-//                }
-//                }
-//           });
-//}
-           
-        this.getExistingSongs(albumID);
-           
+        if (albumID !== undefined){
+            this.getExistingSongs(albumID);
+        }
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     removePopup(e){
         if (e.target.id === "playlist-songs-popup-container"){
@@ -192,7 +151,6 @@ class PlaylistSongsPopup{
     }
     
     addRow(albumID){
-//        console.log(albumID);
         var songRow = $('<div>',{
            'class' : 'add-song-rows'
         });
@@ -234,66 +192,55 @@ class PlaylistSongsPopup{
     }
     
     getExistingSongs(albumID){
-        console.log(albumID);
         $.ajax({
-                url : "api/playlist.php?&type=songs&id=" + albumID ,
-                method:'GET',
-                success: function(data){
-                    var object = data.data.songs;
-                    for(let i=0;i<object.length;i++){
-//                    console.log(data);
-                    var songRow = $('<div>',{
-                      'class' : 'add-song-rows'
-                    });
-                    songRow.appendTo('form#add-playlist-songs-form');
+            url : "api/playlist.php?&type=songs&id=" + albumID ,
+            method:'GET',
+            success: function(data){
+                var object = data.data.songs;
+                for(let i=0;i<object.length;i++){
+                var songRow = $('<div>',{
+                  'class' : 'add-song-rows'
+                });
+                songRow.appendTo('form#add-playlist-songs-form');
 
-                    var URLLabel = $('<label>',{
-                       text : 'Song URL'
-                    });
-                    URLLabel.appendTo($(songRow));
+                var URLLabel = $('<label>',{
+                   text : 'Song URL'
+                });
+                URLLabel.appendTo($(songRow));
 
-                    var URLInput = $('<input>',{
-                        'class' : 'song-URL',
-                        type : 'text',
-                        placeholder : 'http://',
-                        value : data.data.songs[i].url
-                    });
-                    URLInput.appendTo($(songRow));
+                var URLInput = $('<input>',{
+                    'class' : 'song-URL',
+                    type : 'text',
+                    placeholder : 'http://',
+                    value : data.data.songs[i].url
+                });
+                URLInput.appendTo($(songRow));
 
-                    var nameLabel = $('<label>',{
-                       text : 'Song Name'
-                    });
-                    nameLabel.appendTo($(songRow));
+                var nameLabel = $('<label>',{
+                   text : 'Song Name'
+                });
+                nameLabel.appendTo($(songRow));
 
-                    var nameInput = $('<input>',{
-                      'class' : 'song-name',
-                      type : 'text',
-                      placeholder : 'e.g. Yellow',
-                      value : data.data.songs[i].name
-                    });
-                    nameInput.appendTo($(songRow));
+                var nameInput = $('<input>',{
+                  'class' : 'song-name',
+                  type : 'text',
+                  placeholder : 'e.g. Yellow',
+                  value : data.data.songs[i].name
+                });
+                nameInput.appendTo($(songRow));
 
-                    var deleteIcon = $('<i>',{
-                        id : 'delete-row',
-                        'class' : 'fa fa-times',
-                        'aria-hidden' : 'true',
-                        click: function(e){
-                           $(e.target).parent().remove();
-                    }
-                    });
-                    deleteIcon.appendTo(songRow);
-                    }
+                var deleteIcon = $('<i>',{
+                    id : 'delete-row',
+                    'class' : 'fa fa-times',
+                    'aria-hidden' : 'true',
+                    click: function(e){
+                       $(e.target).parent().remove();
                     }
                 });
+                deleteIcon.appendTo(songRow);
+                }
+                }
+        });
     }
-    
-    
     }
-//    updateServer(songs){
-//        console.log(songs);
-//    }
-    
-//    removeRow(){
-//        console.log('hi');
-//    }
 

@@ -11,7 +11,6 @@ class NewPlaylistPopup{
     }
     
     buildPopup(albumID){
-//        console.log('albumID' ,albumID);
         var popUpContainer = $('<div>',{
             id : 'new-playlist-popup-container',
            'class': 'popup-container',
@@ -67,29 +66,33 @@ class NewPlaylistPopup{
             'class' :  'popup-modal-footer'
          });
          footer.appendTo(popUp);
-        
         var nextButton = $('<button>',{
            id : 'next',
            text : 'Next',
            type : 'sumbit',
            form : 'add-new-playlist-form',
-//           click : this.openNextPopup
            click : function(){
-               var albumName = $('input#playlist-name').val();
-               var albumURL = $('input#playlist-URL').val();
-               sessionStorage.setItem('albumName', albumName);
-               sessionStorage.setItem('albumURL', albumURL);
-//               sessionStorage.getItem('albumURL', 'albumName');
-//               console.log(albumName);
-//               console.log(albumURL);
-//               console.log(sessionStorage);
-//                var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
-//                playlistSongsPopup.buildPopup();
+                var albumName = $('input#playlist-name').val();
+                var albumURL = $('input#playlist-URL').val();
+                sessionStorage.setItem('albumName', albumName);
+                sessionStorage.setItem('albumURL', albumURL);
                 if(albumID !== undefined){
+                    $.ajax({
+                       url : "api/playlist.php?type=playlist&id=" + albumID,
+                       method : 'POST',
+                       data : {
+                           "name" : albumName,
+                           "image" : albumURL
+                       },
+                       success : function(){
+                           console.log('album: ' + albumID + 'was updated');
+                       }
+                    });
+                    
                     var playlistSongsPopup = new PlaylistSongsPopup('Edit Playlist Songs');
                         playlistSongsPopup.buildPopup(albumID);
                 }
-                else{
+                else {
                     var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
                         playlistSongsPopup.buildPopup();
                 }
@@ -103,48 +106,75 @@ class NewPlaylistPopup{
             click : this.clearFields
         });
         resetButton.appendTo(footer);
-        this.updateInfo(albumID);
+        
+        if(albumID !== undefined){
+            this.updateInfo(albumID);
+        } else{
+            this.buildEmptyInputs();
+        }
     }
     
     updateInfo(albumID){
-            $.ajax({
-                url : "api/playlist.php?type=playlist&id=" + albumID ,
-                method:'GET',
-                success: function(data){
-                var nameInput = $('<input>',{
-                    id : 'playlist-name',
-                    type : 'text',
-                    placeholder : 'e.g. New Pop Songs',
-                    value : data.data.name
-                });     
-                var nameLabel = $('label.name-label');
-                    nameInput.insertAfter(nameLabel); 
-                var URLInput = $('<input>',{
-                    id : 'playlist-URL',
-                    type : 'text',
-                    placeholder : 'http://',
-                    value : data.data.image,
-                    ready : function(){
-                        var src = $('input#playlist-URL').val();
-                        $('img#add-album-image').attr('src',src);
-                         $('img#add-album-image').on('error',function(){
-                            $('img#add-album-image').attr('src','http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg');
-                        });
-                    },
-                    keyup : function(){
-                        var src = $('input#playlist-URL').val();
-                        $('img#add-album-image').attr('src',src);
-                        $('img#add-album-image').on('error',function(){
-                            $('img#add-album-image').attr('src','http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg');
-                        });
-                    }
-                 });
-                 
-                var URLLabel = $('label.url-label');
-                    URLInput.insertAfter(URLLabel); 
+        $.ajax({
+            url : "api/playlist.php?type=playlist&id=" + albumID,
+            method:'GET',
+            success: function(data){
+            var nameInput = $('<input>',{
+                id : 'playlist-name',
+                type : 'text',
+                placeholder : 'e.g. New Pop Songs',
+                value : data.data.name
+            });     
+            var nameLabel = $('label.name-label');
+                nameInput.insertAfter(nameLabel); 
+            var URLInput = $('<input>',{
+                id : 'playlist-URL',
+                type : 'text',
+                placeholder : 'http://',
+                value : data.data.image,
+                ready : function(){
+                    var src = $('input#playlist-URL').val();
+                    $('img#add-album-image').attr('src',src);
+                     $('img#add-album-image').on('error',function(){
+                        $('img#add-album-image').attr('src','http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg');
+                    });
+                },
+                keyup : function(){
+                    var src = $('input#playlist-URL').val();
+                    $('img#add-album-image').attr('src',src);
+                    $('img#add-album-image').on('error',function(){
+                        $('img#add-album-image').attr('src','http://ccel.ca/wp-content/uploads/2012/09/vector-music-boxes-cover-07-by-dragonart.jpg');
+                    });
                 }
-                });
+             });
+
+            var URLLabel = $('label.url-label');
+                URLInput.insertAfter(URLLabel); 
             }
+        });
+    }
+    
+    buildEmptyInputs(){
+        console.log('buildEmptyInputs');
+        
+        var nameInput = $('<input>',{
+            id : 'playlist-name',
+            type : 'text',
+            placeholder : 'e.g. New Pop Songs'
+        });     
+                
+        var nameLabel = $('label.name-label');
+            nameInput.insertAfter(nameLabel);
+
+        var URLInput = $('<input>',{
+            id : 'playlist-URL',
+            type : 'text',
+            placeholder : 'http://'
+        });
+
+        var URLLabel = $('label.url-label');
+            URLInput.insertAfter(URLLabel); 
+    }
     
     removePopup(e){
         if (e.target.id === "new-playlist-popup-container"){
@@ -155,18 +185,6 @@ class NewPlaylistPopup{
        }
    }
        
-//    openNextPopup(e){
-//        
-//        if(albumID !== undefined){
-//            var playlistSongsPopup = new PlaylistSongsPopup('Edit Playlist Songs');
-//            playlistSongsPopup.buildPopup();
-//        }
-//        else{
-//            var playlistSongsPopup = new PlaylistSongsPopup('Add Playlist Songs');
-//            playlistSongsPopup.buildPopup();
-//        }
-//    }
-    
     clearFields(){
         $('input#playlist-name').val('');
         $('input#playlist-URL').val('');
