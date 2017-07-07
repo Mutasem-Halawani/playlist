@@ -100,3 +100,14 @@ h5.current-song{
 .hide{
     display:none;
 }
+
+li.music-songs-list-item:hover{
+    font-weight: 900;
+    cursor: pointer;
+    color:white;
+}
+
+.selected-song{
+    color : white;
+}
+
