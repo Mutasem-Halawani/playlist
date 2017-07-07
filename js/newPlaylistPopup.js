@@ -11,6 +11,8 @@ class NewPlaylistPopup{
     }
     
     buildPopup(albumID){
+         console.log(albumID);
+//         console.log(data);
         var popUpContainer = $('<div>',{
             id : 'new-playlist-popup-container',
            'class': 'popup-container',
@@ -85,7 +87,6 @@ class NewPlaylistPopup{
                            "image" : albumURL
                        },
                        success : function(){
-                           console.log('album: ' + albumID + 'was updated');
                        }
                     });
                     
@@ -153,10 +154,7 @@ class NewPlaylistPopup{
             }
         });
     }
-    
     buildEmptyInputs(){
-        console.log('buildEmptyInputs');
-        
         var nameInput = $('<input>',{
             id : 'playlist-name',
             type : 'text',

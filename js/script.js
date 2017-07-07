@@ -16,5 +16,5 @@ $('a#add-new-playlist').on('click',function(){
 $.get( "api/playlist.php?type=playlist", function(data) {
     var albums = new MusicAlbum(data);
     albums.buildAlbum(data);
-    console.log(data);
+//    console.log(data);
 });

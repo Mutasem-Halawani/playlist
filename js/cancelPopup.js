@@ -36,7 +36,6 @@ class CancelPopup{
            text: 'delete',
            click : function(){
                 let id = data;
-                console.log(data);
                 $.ajax({
                     url: 'api/playlist.php?type=playlist&id=' + id,
                     type: 'DELETE',

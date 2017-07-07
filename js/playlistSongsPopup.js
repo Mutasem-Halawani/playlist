@@ -107,7 +107,6 @@ class PlaylistSongsPopup{
                 
                 var albumName = sessionStorage.getItem('albumName');
                 var albumURL = sessionStorage.getItem('albumURL');
-                console.log(albumID, albumID,albumID,albumID);
                 
                 if (albumID !== undefined){
                     $.ajax({

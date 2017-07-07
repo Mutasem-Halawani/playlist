@@ -132,39 +132,37 @@ class MusicPlayer{
     
     buildMusicList(albumID){
         $.ajax({
-             url : "api/playlist.php?&type=songs&id=" + albumID ,
-             method:'GET',
-             success: function(data){
-             var object = data.data.songs;
+            url : "api/playlist.php?&type=songs&id=" + albumID ,
+            method:'GET',
+            success: function(data){
+            var object = data.data.songs;
 
-             for(let i=0;i<object.length;i++){
-                 var list = $('ol.music-songs-list');
-                 var listItem = $('<li>',{
-                     'class' : 'music-songs-list-item',
-                     text : object[i].name
-                 });
-                 listItem.appendTo(list);
-             }
+            for(let i=0;i<object.length;i++){
+                var list = $('ol.music-songs-list');
+                var listItem = $('<li>',{
+                    'class' : 'music-songs-list-item',
+                    text : object[i].name
+                });
+                listItem.appendTo(list);
+            }
 
-             var songMarquee = $('div.song-marquee');
-             var firstSong = $('li.music-songs-list-item').first().text();
-             var currentSong = $('<h5>',{
-                 'class' : 'current-song',
-                 text : firstSong
-              });
-             currentSong.appendTo(songMarquee);
+            var songMarquee = $('div.song-marquee');
+            var firstSong = $('li.music-songs-list-item').first().text();
+            var currentSong = $('<h5>',{
+                'class' : 'current-song',
+                text : firstSong
+             });
+            currentSong.appendTo(songMarquee);
 
-             for(let i=0;i<object.length;i++){
-                 var audio = $('audio.audio-player');
-                 var source = $('<source>',{
-                     src : object[i].url,
-                     type : 'audio/mp3'
-                 });
-                 source.appendTo(audio);
-
-                 console.log(object[0].url);
-             }
-             }
+            for(let i=0;i<object.length;i++){
+                var audio = $('audio.audio-player');
+                var source = $('<source>',{
+                    src : object[i].url,
+                    type : 'audio/mp3'
+                });
+                source.appendTo(audio);
+            }
+            }
         });
     }
     
@@ -223,17 +221,22 @@ class MusicPlayer{
     changeIconToPlay(){
         $('i#play-album-music-player').addClass('show');
         $('i#pause').removeClass('show');
-             
+        var audioPlayer = $('audio.audio-player')[0];
+//        console.log(audioPlayer);
+        audioPlayer.pause();
     }
     
     changeIconToPause(){
         $('i#pause').addClass('show');
         $('i#play-album-music-player').removeClass('show');
+        var audioPlayer = $('audio.audio-player')[0];
+//        console.log(audioPlayer);
+        audioPlayer.play();
     }
     
     addNewPlaylist(){
         var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
-            newPlaylistPopup.buildPopup();    
+            newPlaylistPopup.buildPopup();   
     }
     
     editAlbum(){

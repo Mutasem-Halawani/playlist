@@ -10,6 +10,7 @@ class MusicAlbum{
     }
     
     buildAlbum(data){
+        console.log(data);
         var albumContainer = $('<main>',{
            'class' : 'all-albums'
         });
@@ -36,7 +37,6 @@ class MusicAlbum{
             'class' : 'fa fa-times-circle-o delete-album',
             'aria-hidden' : 'true',
             click : function(){
-                   console.log();
                    var cancelPopup = new CancelPopup('Are you sure?',data.data[i].id);
                    cancelPopup.buildPopup(data.data[i].id);
             }
@@ -44,9 +44,13 @@ class MusicAlbum{
         deleteIcon.appendTo(icons);
         
         var editIcon = $('<i>',{
+            'edit-data-album-id' : data.data[i].id,
             'class' : 'fa fa-pencil edit-album',
             'aria-hidden' : 'true',
-            click : this.editAlbum
+            click : function(){
+                var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
+                   newPlaylistPopup.buildPopup(data.data[i].id);  
+            }
         });
         editIcon.appendTo(icons);
         
@@ -55,7 +59,6 @@ class MusicAlbum{
             'class' : 'fa fa-play-circle play-album',
             'aria-hidden' : 'true',
             click : function(){
-                console.log(data.data[i].id);
                 var musicPlayer = new MusicPlayer(data.data[i].id,data.data[i].image);
                 musicPlayer.clearHTML();
                 musicPlayer.buildHeader();
@@ -64,10 +67,5 @@ class MusicAlbum{
         });
         playIcon.appendTo(album);
     }
-    }
-    
-    editAlbum(){
-         var newPlaylistPopup = new NewPlaylistPopup('Edit Playlist');
-            newPlaylistPopup.buildPopup(data);  
     }
 }
