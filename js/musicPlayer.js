@@ -175,35 +175,27 @@ class MusicPlayer{
             method:'GET',
             success: function(data){
             var object = data.data.songs;
-
             for(let i=0;i<object.length;i++){
                 var list = $('ol.music-songs-list');
                 var listItem = $('<li>',{
                     'class' : 'music-songs-list-item',
+                    'data-song-src' : object[i].url,
                     text : object[i].name,
                     click : function(){
-                        
-//                        alert(this.textContent);
-//                        console.log('clicked');
                         var currentSongMarquee = $('h5.current-song');
-//                        var Marquee = currentSongMarquee[0];
-//                        var parsed = Marquee.textContent;
-//                        console.log(Marquee);
-//                        console.log(typeof(Marquee));
-////                        console.log(currentSongMarquee[0]);
-//                        console.log(parsed);
                         currentSongMarquee[0].textContent = this.textContent;
+                        
+                        var songURL = this.getAttribute('data-song-src');
+//                        console.log(this);
+//                        console.log(typeof(this));
+//                        console.log(songURL);
+                        var audioPlayer = $('audio.audio-player');
+                        audioPlayer[0].src = songURL;
+                        audioPlayer[0].play();
                     }
                 });
                 listItem.appendTo(list);
             }
-//            var songs = $('ol.music-songs-list li');
-//            console.log(songs);
-//            for(let i=0;i<songs.length;i++){
-//                this.addClickEventForSongs;
-//                }
-            
-            
             
             var songMarquee = $('div.song-marquee');
             var firstSong = $('li.music-songs-list-item').first().text();
@@ -225,13 +217,6 @@ class MusicPlayer{
         });
     }
     
-//    addClickEventForSongs(i){
-//        var songs = $('ol.music-songs-list li');
-//        songs[i].on('click',function(){
-//            console.log('hi'); 
-//        });
-//    }
-//    
     deleteAlbum(){
         var cancelPopup = new CancelPopup('Are you sure?');
              cancelPopup.buildPopup();
