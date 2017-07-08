@@ -11,8 +11,6 @@ class NewPlaylistPopup{
     }
     
     buildPopup(albumID){
-         console.log(albumID);
-//         console.log(data);
         var popUpContainer = $('<div>',{
             id : 'new-playlist-popup-container',
            'class': 'popup-container',
@@ -148,7 +146,6 @@ class NewPlaylistPopup{
                     });
                 }
              });
-
             var URLLabel = $('label.url-label');
                 URLInput.insertAfter(URLLabel); 
             }
@@ -160,7 +157,6 @@ class NewPlaylistPopup{
             type : 'text',
             placeholder : 'e.g. New Pop Songs'
         });     
-                
         var nameLabel = $('label.name-label');
             nameInput.insertAfter(nameLabel);
 
@@ -169,7 +165,6 @@ class NewPlaylistPopup{
             type : 'text',
             placeholder : 'http://'
         });
-
         var URLLabel = $('label.url-label');
             URLInput.insertAfter(URLLabel); 
     }

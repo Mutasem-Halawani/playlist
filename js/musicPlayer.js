@@ -10,10 +10,6 @@ class MusicPlayer{
         this.albumImg = albumImg;
     }
     
-    clearHTML(){
-        $('body').empty();
-    }
-    
     buildHeader(){
         var header = $('<header>').appendTo('body');
         
@@ -104,6 +100,15 @@ class MusicPlayer{
                 $('i#pause').addClass('show');
                 $('i#play-album-music-player').removeClass('show');
                 });
+        audioPlayer.on('ended',function(){
+                var currentSong = $('li').parent('ol').find('li.active');
+                var nextSong = $('li').parent('ol').find('li.active').next();
+                currentSong.removeClass('active');
+                nextSong.addClass('active');
+                audioPlayer[0].src = nextSong[0].getAttribute('data-song-src');
+                audioPlayer[0].play();
+                $('h5.current-song')[0].innerHTML = nextSong.text();
+            });
             
         var musicList = $('<ol>',{
             'class' : 'music-songs-list'
@@ -138,7 +143,6 @@ class MusicPlayer{
         editIcon.appendTo(controls);
         
         this.buildMusicList(albumID);
-        this.playNextSong();
     }
     
     buildMusicList(albumID){
@@ -154,10 +158,13 @@ class MusicPlayer{
                     'data-song-src' : object[i].url,
                     text : object[i].name,
                     click : function(){
+                        $('li').parent('ol').find('li.active').removeClass('active');
+                        $(this).addClass('active');
                         var currentSongMarquee = $('h5.current-song');
                         currentSongMarquee[0].textContent = this.textContent;
                         var songURL = this.getAttribute('data-song-src');
                         var audioPlayer = $('audio.audio-player');
+                        currentSongMarquee[0].setAttribute('current-song-src',songURL);
                         audioPlayer[0].src = songURL;
                         audioPlayer[0].play();
                         $('i#pause').addClass('show');
@@ -166,11 +173,12 @@ class MusicPlayer{
                 });
                 listItem.appendTo(list);
             }
-            
+            $('li.music-songs-list-item').first().addClass('active');
             var songMarquee = $('div.song-marquee');
             var firstSong = $('li.music-songs-list-item').first().text();
             var currentSong = $('<h5>',{
                 'class' : 'current-song',
+                'current-song-src' : object[0].url,
                 text : firstSong
              });
             currentSong.appendTo(songMarquee);
@@ -252,72 +260,6 @@ class MusicPlayer{
         $('i#play-album-music-player').removeClass('show');
         var audioPlayer = $('audio.audio-player');
         audioPlayer[0].play();
-    }
-    
-    playNextSong(){
-//        var myvid = document.getElementById('myvideo');
-//
-//        myvid.addEventListener('ended', function(e) {
-//          // get the active source and the next video source.
-//          // I set it so if there's no next, it loops to the first one
-//          var activesource = document.querySelector("#myvideo source.active");
-//          var nextsource = document.querySelector("#myvideo source.active + source") || document.querySelector("#myvideo source:first-child");
-//
-//          // deactivate current source, and activate next one
-//          activesource.className = "";
-//          nextsource.className = "active";
-//
-//          // update the video source and play
-//          myvid.src = nextsource.src;
-//          myvid.play();
-//        });
-           var audioPlayer = $('audio.audio-player');
-           
-         
-            audioPlayer.on('ended',function(i){
-//                var firstSong = audioPlayer.children('source')[0];
-//                firstSong.className = 'active';
-//                console.log(firstSong);
-//                
-//                
-//                audioPlayer[0].src = 'songs/2pac/Tupac - Only God Can Judge Me.mp3';
-//                console.log(audioPlayer[0]);
-//                audioPlayer[0].play();
-//                var activeSong = $('audio.audio-player source.active');
-//                i = i;
-                var songsSources = $('audio.audio-player source');
-//                console.log(audioPlayer.children('source.active'));
-//                var songAttr = songsSources.attr('class');
-//                var activeSong = songsSources.attr('class') = 'active'
-//                if (songsSources.attr('class') === 'active'){
-//                    activeSong
-//                }
-//                var nextSong = audioPlayer.children('source.active + source');
-//                var nextSong = currentSong.next();
-//                
-//                console.log('currentSong', currentSong.src);
-//                console.log('nextSong', nextSong.src);
-                var activeSong = songsSources[0];
-                var nextSong = songsSources[2];
-                  nextSong.className = "active";
-//                console.log('activeSong', activeSong);
-//                console.log(activeSong.src);
-//                console.log('nextSong', activeSong);
-                console.log(nextSong.src);
-//                console.log(nextSong.src);
-//                console.log('nextSong', nextSong);
-//                console.log(nextSong);
-//                activeSong.className = '';
-//                nextSong.className = 'active';
-                audioPlayer[0].src = nextSong.src;
-//                console.log(audioPlayer);
-                console.log(audioPlayer[0]);
-//                console.log(audioPlayer.src);
-                audioPlayer[0].play();
-//                    i++;
-//                audioPlayer[0].src = nextSong.src;
-//                audioPlayer[0].play();
-            });
     }
     
     addNewPlaylist(){

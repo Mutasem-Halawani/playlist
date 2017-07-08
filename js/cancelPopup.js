@@ -5,7 +5,6 @@
  */
 
 class CancelPopup{
-    
     constructor(text, data){
         this.text = text;
         this.data = data;

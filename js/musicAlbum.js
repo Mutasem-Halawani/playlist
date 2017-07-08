@@ -60,7 +60,7 @@ class MusicAlbum{
             'aria-hidden' : 'true',
             click : function(){
                 var musicPlayer = new MusicPlayer(data.data[i].id,data.data[i].image);
-                musicPlayer.clearHTML();
+                $('body').empty();
                 musicPlayer.buildHeader();
                 musicPlayer.buildMusicPlayer(data.data[i].id,data.data[i].image);
             }
