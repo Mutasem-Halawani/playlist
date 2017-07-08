@@ -92,47 +92,19 @@ class MusicPlayer{
         var audioPlayer = $('<audio>',{
             'class' : 'audio-player',
             controls : true
-//            ended : this.playNextSong
-//            ended : function(){
-//                var audioPlayer = $('audio.audio-player');
-//                var activeSong = $('audio.audio-player source.active');
-//                var nextSong = $('audio.audio-player source.active + source') || $('audio.audio-player source:first-child');
-//
-//                activeSong.className = '';
-//                nextSong.className = 'active';
-//
-//                console.log(audioPlayer);
-//
-//                console.log('song ended');
-//                this.play();
-//
-//                this.src = nextSong.src;
-//                this.play(); 
-////                audioPlayer[0].play();
-////
-////                audioPlayer[0].src = nextSong.src;
-////                audioPlayer[0].play(); 
-//            }
-//            
-//            audioTracks : true,
-//            textTracks : true
-//            'play' : this.changeIconToPause()
-//            play : function(){
-//                console.log('song played now');
-////                $('i#pause').addClass('show');
-////                $('i#play-album-music-player').removeClass('show');
-//            },
-//            pause : function(){
-//                console.log('song paused');
-////                $('i#play-album-music-player').addClass('show');
-////                $('i#pause').removeClass('show');
-//            }
-//            pause: this.changeIconToPause(),
-//            play: this.changeIconToPlay()
-            
         });
         audioPlayer.appendTo(playerSection);
-       
+        
+        var audioPlayer = $('audio.audio-player');
+        audioPlayer.on('pause',function(){
+                $('i#play-album-music-player').addClass('show');
+                $('i#pause').removeClass('show');
+                });
+        audioPlayer.on('play',function(){
+                $('i#pause').addClass('show');
+                $('i#play-album-music-player').removeClass('show');
+                });
+            
         var musicList = $('<ol>',{
             'class' : 'music-songs-list'
         });
@@ -184,14 +156,12 @@ class MusicPlayer{
                     click : function(){
                         var currentSongMarquee = $('h5.current-song');
                         currentSongMarquee[0].textContent = this.textContent;
-                        
                         var songURL = this.getAttribute('data-song-src');
-//                        console.log(this);
-//                        console.log(typeof(this));
-//                        console.log(songURL);
                         var audioPlayer = $('audio.audio-player');
                         audioPlayer[0].src = songURL;
                         audioPlayer[0].play();
+                        $('i#pause').addClass('show');
+                        $('i#play-album-music-player').removeClass('show');
                     }
                 });
                 listItem.appendTo(list);
@@ -216,6 +186,7 @@ class MusicPlayer{
             }
         });
     }
+   
     
     deleteAlbum(){
         var cancelPopup = new CancelPopup('Are you sure?');
@@ -280,31 +251,7 @@ class MusicPlayer{
         $('i#pause').addClass('show');
         $('i#play-album-music-player').removeClass('show');
         var audioPlayer = $('audio.audio-player');
-//        var songs = audioPlayer.children('source');
         audioPlayer[0].play();
-////        songs[0].play();
-//        console.log(audioPlayer);
-//        console.log(audioPlayer[0]);
-//        console.log(songs);
-//        console.log(songs[0]);
-//        console.log(songs[1]);
-//        console.log(songs[1]);
-//        console.log(audioPlayer.audioTracks());
-
-
-
-        
-//        for (var i = 0; i < songs.length; i++) {
-//            audioListeners(i);
-//            console.log(songs.length);
-//        }
-//        function audioListeners(i) {
-//            songs[i].addEventListener('ended', function() {
-//              this.duration = 0; 
-//              this.pause();
-//              audioPlayer[i+1].play();
-//            }, false);
-//        }
     }
     
     playNextSong(){
@@ -371,8 +318,6 @@ class MusicPlayer{
 //                audioPlayer[0].src = nextSong.src;
 //                audioPlayer[0].play();
             });
-           
-           
     }
     
     addNewPlaylist(){
