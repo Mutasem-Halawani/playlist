@@ -99,7 +99,7 @@ h3 {
 }
 
 section.showAlbum{
-    display: block;
+    display: flex;
 }
 
 

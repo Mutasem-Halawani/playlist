@@ -245,6 +245,7 @@ class MusicPlayer{
         $.get( "api/playlist.php?type=playlist", function( data ) {
         var albums = new MusicAlbum(data);
         albums.buildAlbum(data);
+        $('h3.album-title').circleType({radius: 200});
         });
     }
     
