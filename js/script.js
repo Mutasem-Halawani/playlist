@@ -12,9 +12,30 @@ $('a#add-new-playlist').on('click',function(){
     newPlaylistPopup.buildPopup();
 });
 
-
 $.get( "api/playlist.php?type=playlist", function(data) {
     var albums = new MusicAlbum(data);
     albums.buildAlbum(data);
-//    console.log(data);
+});
+
+$('input#search-playlists').on('keyup',function(){
+    var search = this.value.toUpperCase();
+    if (search === ''){
+        for (let i=0;i<$('section.album-cover h3').length;i++){
+            $('section.album-cover')[i].classList.remove('hideAlbum');
+            $('section.album-cover')[i].classList.add('showAlbum');
+        }
+    }
+    else {
+        for (let i=0;i<$('section.album-cover h3').length;i++){
+            var albumName = $('section.album-cover h3')[i].textContent.toUpperCase();
+            if (albumName.indexOf(search) > -1){
+              $('section.album-cover')[i].classList.remove('hideAlbum');
+              $('section.album-cover')[i].classList.add('showAlbum');
+            }
+            else {
+              $('section.album-cover')[i].classList.remove('showAlbum');
+              $('section.album-cover')[i].classList.add('hideAlbum');
+            }
+        }
+    }
 });

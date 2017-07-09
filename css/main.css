@@ -65,9 +65,9 @@ section.album-cover{
     border-radius: 100%;
     width:300px;
     height: 300px;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin:1em;
     position:relative;
 }
@@ -98,6 +98,14 @@ h3 {
     /*margin: 4em;*/
 }
 
+section.showAlbum{
+    display: block;
+}
+
+
+section.hideAlbum{
+    display: none;
+}
 /*.char1 { transform: rotate(-40deg); }
 .char2 { transform: rotate(-30deg); }
 .char3 { transform: rotate(-20deg); }
