@@ -39,7 +39,10 @@ class CancelPopup{
                     url: 'api/playlist.php?type=playlist&id=' + id,
                     type: 'DELETE',
                     success: function(){
-                        alert('success');
+                            $('body').empty();
+                            $('div').remove();
+                             var header = new MainHeader();
+                                    header.buildHeader();
                     }
                 });
            }

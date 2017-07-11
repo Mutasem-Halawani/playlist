@@ -85,6 +85,10 @@ class NewPlaylistPopup{
                            "image" : albumURL
                        },
                        success : function(){
+//                           $.get( "api/playlist.php?type=playlist", function(data) {
+//                                    var albums = new MusicAlbum(data);
+//                                    albums.buildAlbum(data);
+//                                });  
                        }
                     });
                     

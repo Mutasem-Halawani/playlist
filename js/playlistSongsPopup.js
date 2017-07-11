@@ -116,7 +116,11 @@ class PlaylistSongsPopup{
                            "songs" : allSongsArray      
                        },
                        success: function(data){
-                               alert('success');
+//                               alert('success');
+                                $('body').empty();
+                                $('div').remove();
+                                var header = new MainHeader();
+                                    header.buildHeader();
                        }
                     });
                 }
@@ -130,7 +134,10 @@ class PlaylistSongsPopup{
                            "songs" : allSongsArray      
                        },
                        success: function(data){
-                               alert('success');
+                                $('body').empty();
+                                $('div').remove();
+                                var header = new MainHeader();
+                                    header.buildHeader();
                        }
                     });
                 }

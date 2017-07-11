@@ -35,7 +35,7 @@ class MusicPlayer{
         var buttonText = $('<span>',{
             id : 'back-text',
             text : 'Back',
-            click : this.previousPage
+            click: this.previousPage.bind(this)
         });
         buttonText.appendTo(backButton);
     }
@@ -211,26 +211,20 @@ class MusicPlayer{
     }
     
     previousPage(){
-         $('body').empty();
+        $('body').empty();
          
         var header = $('<header>').appendTo('body');
         
-        var link = $('<a>',{
+        $('<a>',{
             href : '#',
             id : 'add-new-playlist',
             text : 'Add new playlist',
-            click : function(){
-                 var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
-                 newPlaylistPopup.buildPopup();    
-            }
-        });
-        link.appendTo(header);
-        
+            click : this.addNewPlaylist
+        }).appendTo(header);
         var addIcon = $('<i>',{
             'class' : 'fa fa-plus-circle',
             'aria-hidden' : 'true'
-        });
-        addIcon.prependTo(link);
+        }).prependTo($('a#add-new-playlist'));
         
         var label = $('<label>').appendTo(header);
         
