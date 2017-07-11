@@ -195,7 +195,6 @@ class MusicPlayer{
         });
     }
    
-    
     deleteAlbum(){
         var cancelPopup = new CancelPopup('Are you sure?');
              cancelPopup.buildPopup();
@@ -212,35 +211,9 @@ class MusicPlayer{
     
     previousPage(){
         $('body').empty();
-         
-        var header = $('<header>').appendTo('body');
-        
-        $('<a>',{
-            href : '#',
-            id : 'add-new-playlist',
-            text : 'Add new playlist',
-            click : this.addNewPlaylist
-        }).appendTo(header);
-        var addIcon = $('<i>',{
-            'class' : 'fa fa-plus-circle',
-            'aria-hidden' : 'true'
-        }).prependTo($('a#add-new-playlist'));
-        
-        var label = $('<label>').appendTo(header);
-        
-        var input = $('<input>',{
-            id : 'search-playlists',
-            type : 'search',
-            placeholder : 'Search playlists',
-            size : '15'
-        });
-        input.prependTo(label);
-        
-        $.get( "api/playlist.php?type=playlist", function( data ) {
-        var albums = new MusicAlbum(data);
-        albums.buildAlbum(data);
-        $('h3.album-title').circleType({radius: 200});
-        });
+        $('div').remove();
+        var header = new MainHeader();
+            header.buildHeader();
     }
     
     changeIconToPlay(){
