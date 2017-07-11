@@ -48,6 +48,10 @@ and open the template in the editor.
     i#delete-row:hover{
         transform: scale(1);
     }
+    section.album-cover{
+        margin:0.5vw auto !important;
+        margin-bottom: 3em !important;
+    }
 }
 
 @media only screen and (max-width:680px){
@@ -79,16 +83,12 @@ and open the template in the editor.
         width:250px;
         height:250px;
     }
-    
-    div.music-player{
-    }
 }
 
 @media only screen and (max-width:840px){
     div#add-new-playlist-popup{
         width: inherit;
     }
-    
 }
 
 
