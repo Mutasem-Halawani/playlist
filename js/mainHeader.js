@@ -12,7 +12,10 @@ class MainHeader{
             href : '#',
             id : 'add-new-playlist',
             text : 'Add new playlist',
-            click : this.addNewPlaylist
+            click : function(){
+                var newPlaylistPopup = new NewPlaylistPopup('Add New Playlist');
+                    newPlaylistPopup.buildPopup();
+            }
         }).appendTo(header);
         var addIcon = $('<i>',{
             'class' : 'fa fa-plus-circle',
